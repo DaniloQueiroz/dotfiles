@@ -10,16 +10,11 @@ function wrong_usage() {
 }
 
 function home(){
-    for i in $files; do
-        cp -ruv ~/$i ~/$i.bak
-        cp -ruv $i ~/$i
-    done 
+    rsync -crbv --suffix=.bak $files ~
 }
 
 function repo(){
-    for i in $files; do
-        cp -ruv ~/$i $i
-    done 
+    rsync -crv ~/$files .
 }
 
 case $1 in
