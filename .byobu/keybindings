@@ -1,0 +1,4 @@
+source /usr/share/byobu/keybindings/f-keys
+escape "^Aa"
+register x "^A"
+bindkey "^A"
