@@ -228,6 +228,7 @@ alias g='git-sh'
 alias gg='gitg .'
 alias pp='python -mjson.tool'
 alias py='python'
+alias pyclean='pyclean -v .'
 
 # Add .utils to path
 PATH=$PATH:/home/danilo/.utils
