@@ -225,13 +225,8 @@ alias h='history'
 alias s='sed'
 alias v='vim'
 alias g='git-sh'
-alias gg='gitg .'
+alias gg='gitg . & >/dev/null'
 alias pp='python -mjson.tool'
 alias py='python'
 alias pyclean='pyclean -v .'
 
-# Add .utils to path
-PATH=$PATH:/home/danilo/.utils
-
-# added by ctpx tools
-export GAE_JAVA_HOME=/home/danilo/Programming/resources/google-appengine/java-sdk-current
