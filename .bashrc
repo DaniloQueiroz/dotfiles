@@ -213,9 +213,6 @@ shopt -s globstar
 # avoid audible bell
 set bell-style none
 
-# set vim mode (insert and navigate mode, dd, 0, i and other stuff)
-set -o vi
-
 # flush history after each command // useful for multiple bash sessions
 PROMPT_COMMAND="history -a; history -c; history -r;$PROMPT_COMMAND"
 
