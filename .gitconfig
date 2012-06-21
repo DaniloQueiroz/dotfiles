@@ -1,0 +1,25 @@
+[color]
+	ui = auto
+[user]
+	name = Danilo Penna Queiroz\n
+	email = danilo@deliveryhero.com
+[alias]
+	st = status
+	co = checkout
+	br = branch
+	ci = commit
+	cl = clone
+        rb = rebase
+        cp=cherry-pick
+        sh=stash
+        ai=add --interactive
+        sl=log --pretty=oneline --abbrev-commit
+        l=log --graph --stat --abbrev-commit
+        d=diff --color-words
+
+[giggle]
+	main-window-maximized = true
+	main-window-geometry = 453x160+49+46
+	main-window-view = FileView
+	file-view-vpane-position = 331
+	history-view-vpane-position = 621
