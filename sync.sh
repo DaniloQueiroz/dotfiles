@@ -1,6 +1,6 @@
 #! /bin/bash
 
-files='.bashrc .byobu .vimrc .gitconfig'
+files='.bashrc .byobu/* .vimrc .gitconfig .xchat2/xchat.conf .xchat2/keybindings.conf'
 
 function wrong_usage() {
     printf "wrong usage: you should use 'home' or 'repo' as parameter:\n"
@@ -10,12 +10,14 @@ function wrong_usage() {
 }
 
 function home(){
-    rsync -crbv --suffix=.bak $files ~
+    for file in $files; do
+        rsync -crbv --suffix=.bak $file ~/$file
+    done
 }
 
 function repo(){
     for file in $files; do
-        rsync -crv ~/$file .
+        rsync -crv ~/$file ./$file
     done
 }
 
