@@ -225,8 +225,13 @@ alias h='history'
 alias s='sed'
 alias v='vim'
 alias g='git-sh'
-alias gg='gitg . & >/dev/null'
+alias gg='gitg . & &>/dev/null'
 alias pp='python -mjson.tool'
 alias py='python'
 alias pyclean='pyclean -v .'
 
+# Use vim as pager
+if [ -f /usr/share/vim/vim73/macros/less.sh ]
+then
+    alias less=/usr/share/vim/vim73/macros/less.sh
+fi
