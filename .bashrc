@@ -162,6 +162,7 @@ function help() {
         builtin help
     fi
 }
+alias ?='help'
 
 #####
 # replaces the default command_not_found_handle
