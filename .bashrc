@@ -106,6 +106,10 @@ fi
 ## Personal Settings ##
 #######################
 
+# check for emails on local box
+MAIL=/var/spool/mail/$(whoami)
+MAILCHECK=30
+
 # Go up directory tree X number of directories
 function -() {
     COUNTER="$@";
@@ -235,4 +239,5 @@ alias pyclean='pyclean -v .'
 if [ -f /usr/share/vim/vim73/macros/less.sh ]
 then
     alias less=/usr/share/vim/vim73/macros/less.sh
+    alias lless=/usr/bin/less
 fi

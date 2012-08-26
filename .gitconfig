@@ -23,3 +23,5 @@
 	main-window-view = FileView
 	file-view-vpane-position = 331
 	history-view-vpane-position = 621
+[rebase]
+	autosquash = true
