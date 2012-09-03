@@ -152,7 +152,7 @@ function cd() {
         unset num idx
     else
         # change dir
-        builtin cd $1
+        builtin cd "$1"
     fi
 }
 
