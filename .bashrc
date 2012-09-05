@@ -234,6 +234,8 @@ alias gg='gitg . & &>/dev/null'
 alias pp='python -mjson.tool'
 alias py='python'
 alias pyclean='pyclean -v .'
+alias ttail='/usr/bin/tail'
+alias tail='colortail'
 
 # Use vim as pager
 if [ -f /usr/share/vim/vim73/macros/less.sh ]
