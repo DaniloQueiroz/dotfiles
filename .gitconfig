@@ -25,3 +25,5 @@
 	history-view-vpane-position = 621
 [rebase]
 	autosquash = true
+[diff]
+	tool = meld
