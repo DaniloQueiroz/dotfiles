@@ -215,6 +215,8 @@ shopt -s autocd
 # enable the ** operator
 shopt -s globstar
 
+# enable ctrl+s (history search forward) 
+stty -ixon
 # avoid audible bell
 set bell-style none
 

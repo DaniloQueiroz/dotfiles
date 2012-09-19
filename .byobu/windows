@@ -1,5 +1,5 @@
 chdir ~
 screen -t home /bin/bash
 chdir ~/Programming/projects
-screen -t gitsg /usr/bin/git-sh
+screen -t gitsh /usr/bin/git-sh
 screen -t bash /bin/bash
