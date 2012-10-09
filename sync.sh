@@ -1,6 +1,6 @@
 #! /bin/bash
 
-files='.bashrc .byobu/* .vimrc .gitconfig .xchat2/xchat.conf .xchat2/keybindings.conf'
+files='.bashrc .byobu/* .vimrc .gitconfig .xchat2/xchat.conf .xchat2/keybindings.conf .ackrc'
 
 function wrong_usage() {
     printf "wrong usage: you should use 'home' or 'repo' as parameter:\n"
