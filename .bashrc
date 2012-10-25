@@ -220,6 +220,10 @@ stty -ixon
 # avoid audible bell
 set bell-style none
 
+# change shell tab/autocomplete
+bind 'TAB:menu-complete'
+bind 'set show-all-if-ambiguous on'
+
 # flush history after each command // useful for multiple bash sessions
 PROMPT_COMMAND="history -a; history -c; history -r;$PROMPT_COMMAND"
 
@@ -245,3 +249,4 @@ then
     alias less=/usr/share/vim/vim73/macros/less.sh
     alias lless=/usr/bin/less
 fi
+
