@@ -128,7 +128,7 @@ function -() {
         cd $nwd # change directories to the new working directory
     else
         # print usage and return error
-        echo "usage: up [NUMBER]"
+        echo "usage: - [NUMBER]"
         return 1
     fi
 }
