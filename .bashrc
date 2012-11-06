@@ -84,7 +84,7 @@ alias l='ls -CF'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|/usr/bin/tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -178,7 +178,7 @@ alias ?='help'
 #####
 # rename original command_not_found_handle to ubuntu_command_not_found_handle
 declare -F command_not_found_handle > /dev/null || return 1
-eval "$(echo "ubuntu_command_not_found_handle()"; declare -f command_not_found_handle | tail -n +2)"
+eval "$(echo "ubuntu_command_not_found_handle()"; declare -f command_not_found_handle | /usr/bin/tail -n +2)"
 # the new command_not_found_handle function
 function command_not_found_handle() {
     orig_cmd=$1
@@ -187,7 +187,7 @@ function command_not_found_handle() {
         command ./${orig_cmd} $*
         return $?
     else
-        cmd=$(/usr/lib/command-not-found ${orig_cmd} 2>&1 | head -n2 | tail -n1 | awk -F\' '{ print $2 }')
+        cmd=$(/usr/lib/command-not-found ${orig_cmd} 2>&1 | head -n2 | /usr/bin/tail -n1 | awk -F\' '{ print $2 }')
         if [ -n "${cmd}" ]; then
             hash ${cmd} 2>/dev/null
             if [ $? -eq 0 ]; then
@@ -202,9 +202,6 @@ function command_not_found_handle() {
         return $(ubuntu_command_not_found_handle ${orig_cmd} $*)
     fi
 }
-
-# complete ssh based on previous ssh commands
-complete -W "$(echo `history | egrep '^ssh ' | sort | uniq | sed 's/^ssh //'`;)" ssh
 
 # fix spelling errors on cd command
 shopt -s cdspell
@@ -249,4 +246,7 @@ then
     alias less=/usr/share/vim/vim73/macros/less.sh
     alias lless=/usr/bin/less
 fi
+
+# complete ssh based on previous ssh commands
+complete -W "$(egrep '^ssh ' ~/.bash_history | sort | uniq | sed 's/^ ssh //')" ssh
 
