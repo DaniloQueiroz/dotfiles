@@ -136,7 +136,9 @@ function -() {
 # choose a dir to change using globstar
 # you can use 'cd **/dir' and it will show the available options
 function cd() {
-    if [ $# -gt 1 ]; then
+    if [ $# -eq 0 ]; then
+        builtin cd $HOME
+    elif [ $# -gt 1 ]; then
         # echo print the options
         printf "\nChoose a dir\n"
         idx=0
