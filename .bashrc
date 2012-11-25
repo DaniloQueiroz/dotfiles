@@ -170,6 +170,31 @@ function help() {
 }
 alias ?='help'
 
+# Manage screens session using Byobu 
+function screen() {
+    case $1 in
+        'list')
+            byobu -ls
+            ;;
+        'help')
+            echo "Use 'screen list' to list current sessions;"
+            echo "or 'screen <window_name>' to start a new session or connect to the existent one."
+            echo "Use sscreen to call the original screen command"
+            ;;
+        *)
+            
+            BYOBU_PROFILE=${1:-personal}
+            BYOBU_SESSION=$(byobu -ls | grep ${BYOBU_PROFILE} | awk '{ print $1 }')
+            if [ -n ${BYOBU_SESSION:-''} ]; then
+                byobu-select-session $BYOBU_SESSION
+            else
+                BYOBU_WINDOWS=${BYOBU_PROFILE} byobu -S ${BYOBU_PROFILE}
+            fi
+            ;;
+    esac
+}
+alias sscreen=/usr/bin/screen
+
 #####
 # replaces the default command_not_found_handle
 # this custom one check if the command is at local dir
@@ -205,6 +230,9 @@ function command_not_found_handle() {
     fi
 }
 
+# complete ssh based on previous ssh commands
+complete -W "$(egrep '^ssh ' ~/.bash_history | sort | uniq | sed 's/^ ssh //')" ssh
+
 # fix spelling errors on cd command
 shopt -s cdspell
 
@@ -213,6 +241,9 @@ shopt -s autocd
 
 # enable the ** operator
 shopt -s globstar
+
+# enable auto complete for hosts 
+shopt -s hostcomplete
 
 # enable ctrl+s (history search forward) 
 stty -ixon
@@ -249,6 +280,5 @@ then
     alias lless=/usr/bin/less
 fi
 
-# complete ssh based on previous ssh commands
-complete -W "$(egrep '^ssh ' ~/.bash_history | sort | uniq | sed 's/^ ssh //')" ssh
+source ~/.resty.sh
 

@@ -22,13 +22,59 @@
 
 # Configurations that you can override; if you leave these commented out,
 # Byobu will try to auto-detect them.
-#LOGO="\o/"
-#MONITORED_DISK=/
-#DISK_IO_THRESHOLD=50
-#MONITORED_INTERFACE=eth0
-#NETWORK_THRESHOLD=20
-#MONITORED_TEMP=/proc/acpi/thermal_zone/THM0/temperature
-#TEMP=F
+
+# This should be auto-detected for most distro, but setting it here will save
+# some call to lsb_release and the like.
 #DISTRO=Ubuntu
+
+# Default: depends on the distro (which is either auto-detected, either set
+# via $DISTRO)
+#LOGO="\o/"
+
+# Abbreviate the release to N characters
+# By default, this is disabled.  But if you set RELEASE_ABBREVIATED=1
+# and your lsb_release is "precise", only "p" will be displayed
+#RELEASE_ABBREVIATED=1
+
+# Default: /
+#MONITORED_DISK=/
+
+# Minimum disk throughput that triggers the notification (in kB/s)
+# Default: 50
+#DISK_IO_THRESHOLD=50
+
+# Default: eth0
+#MONITORED_NETWORK=eth0
+
+# Unit used for network throughput (either bits per second or bytes per second)
+# Default: bits
+#NETWORK_UNITS=bytes
+
+# Minimum network throughput that triggers the notification (in kbit/s)
+# Default: 20
+#NETWORK_THRESHOLD=20
+
+# You can add an additional source of temperature here
+#MONITORED_TEMP=/proc/acpi/thermal_zone/THM0/temperature
+
+# Default: C
+#TEMP=F
+
 #SERVICES="eucalyptus-nc|NC eucalyptus-cloud|CLC eucalyptus-walrus eucalyptus-cc|CC eucalyptus-sc|SC"
+
 #FAN=$(find /sys -type f -name fan1_input | head -n1)
+
+# You can set this to 1 to report your external/public ip address
+# Default: 0
+#IP_EXTERNAL=0
+
+# The users notification normally counts ssh sessions; set this configuration to '1'
+# to instead count number of distinct users logged onto the system
+# Default: 0
+#USERS_DISTINCT=0
+
+# If we're not in EC2 (ie, no metadata service, and no known instance type), the
+# ec2_cost status is disabled by default.  To override, and get an esitmate, set
+# this to '1'.
+# Default: 0
+#EC2_ESTIMATE=0

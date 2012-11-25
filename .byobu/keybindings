@@ -1,4 +1,3 @@
-source /usr/share/byobu/keybindings/f-keys
-escape "^Aa"
-register x "^A"
+source $BYOBU_PREFIX/share/byobu/keybindings/common
+escape ^Aa
 bindkey "^A"

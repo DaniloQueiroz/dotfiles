@@ -1,5 +1,5 @@
 " set color scheme
-colorscheme koehler
+colorscheme desert
 " set spell lang
 setlocal spell spelllang=en_us
 " nocompatible to vi mode
