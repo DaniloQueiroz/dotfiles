@@ -170,7 +170,8 @@ function help() {
 }
 alias ?='help'
 
-# Manage screens session using Byobu 
+# Manage screens session using Byobu
+export BYOBU_BACKEND=screen
 function screen() {
     case $1 in
         'list')
@@ -280,5 +281,28 @@ then
     alias lless=/usr/bin/less
 fi
 
-source ~/.resty.sh
+## loads resty
+if [ -f ~/.resty.sh ]; then
+    source ~/.resty.sh
+fi
+
+
+## killall autocomplete 
+_killall ()
+{
+    local cur prev
+    COMPREPLY=()
+    cur=${COMP_WORDS[COMP_CWORD]}
+
+    # get a list of processes (the first sed evaluation
+    # takes care of swapped out processes, the second
+    # takes care of getting the basename of the process)
+    COMPREPLY=( $( /bin/ps -u $USER -o comm  | \
+        sed -e '1,1d' -e 's#[]\[]##g' -e 's#^.*/##'| \
+        awk '{if ($0 ~ /^'$cur'/) print $0}' ))
+
+    return 0
+}
+
+complete -F _killall killall
 
