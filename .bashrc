@@ -273,6 +273,7 @@ alias py='python'
 alias pyclean='pyclean -v .'
 alias ttail='/usr/bin/tail'
 alias tail='colortail'
+alias eclipse='$(find ~ -name eclipse.ini -exec dirname {} + -quit)/eclipse'
 
 # Use vim as pager
 if [ -f /usr/share/vim/vim73/macros/less.sh ]
