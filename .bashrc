@@ -279,7 +279,7 @@ alias eclipse='$(find ~ -name eclipse.ini -exec dirname {} + -quit)/eclipse'
 if [ -f /usr/share/vim/vim73/macros/less.sh ]
 then
     alias less=/usr/share/vim/vim73/macros/less.sh
-    alias lless=/usr/bin/less
+    alias lless='/usr/bin/less -MQRSi'
 fi
 
 ## loads resty
