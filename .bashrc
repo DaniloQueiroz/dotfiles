@@ -252,8 +252,9 @@ stty -ixon
 set bell-style none
 
 # change shell tab/autocomplete
-bind 'TAB:menu-complete'
+#bind 'TAB:menu-complete'
 bind 'set show-all-if-ambiguous on'
+bind 'set show-all-if-unmodified on'
 
 # flush history after each command // useful for multiple bash sessions
 PROMPT_COMMAND="history -a; history -c; history -r;$PROMPT_COMMAND"
@@ -304,6 +305,20 @@ _killall ()
 
     return 0
 }
-
 complete -F _killall killall
+
+# git prompt
+function parse_git_dirty {
+    [[ $(git status 2> /dev/null | ttail -n1) != "nothing to commit (working directory clean)" ]] && echo " *"
+}
+function get_commit_count() {
+    git status 2> /dev/null | awk '/Your branch is ahead/ {print " |"$(NF-1)}'
+}
+function git_branch_name() {
+    git branch 2>/dev/null | grep -e '^*' | sed -E "s/^\* (.+)$/(\1$(parse_git_dirty)$(get_commit_count))/"
+}
+function show_colored_git_branch_in_prompt() {
+    PS1=${PS1:0:-3}"\[\033[31m\]\$(git_branch_name)\[\033[m\]$ "
+}
+show_colored_git_branch_in_prompt
 
