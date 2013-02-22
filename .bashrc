@@ -307,6 +307,21 @@ _killall ()
 }
 complete -F _killall killall
 
+## gradle autocomplete
+_gradle_complete()
+{
+    local cur tasks
+     
+    COMPREPLY=()
+    cur=${COMP_WORDS[COMP_CWORD]}
+    tasks='clean compile dists javadoc jar test war eclipse check'
+    cur=`echo $cur | sed 's/\\\\//g'`
+    COMPREPLY=($(compgen -W "${tasks}" ${cur} | sed 's/\\\\//g') )
+}
+ 
+complete -F _gradle_complete -o filenames gradle
+
+
 # git prompt
 function parse_git_dirty {
     [[ $(git status 2> /dev/null | ttail -n1) != "nothing to commit (working directory clean)" ]] && echo " *"
@@ -321,4 +336,5 @@ function show_colored_git_branch_in_prompt() {
     PS1=${PS1:0:-3}"\[\033[31m\]\$(git_branch_name)\[\033[m\]$ "
 }
 show_colored_git_branch_in_prompt
+
 
