@@ -215,6 +215,14 @@ function command_not_found_handle() {
         command ./${orig_cmd} $*
         return $?
     else
+        if [ -d ./.git ]; then
+            git help ${orig_cmd} > /dev/null
+            if [ $? -eq 0 ]; then
+               command git ${orig_cmd}
+               return $?
+           fi
+        fi
+
         cmd=$(/usr/lib/command-not-found ${orig_cmd} 2>&1 | head -n2 | /usr/bin/tail -n1 | awk -F\' '{ print $2 }')
         if [ -n "${cmd}" ]; then
             hash ${cmd} 2>/dev/null
@@ -271,7 +279,7 @@ alias g='git-sh'
 alias gg='gitg . & &>/dev/null'
 alias pp='python -mjson.tool'
 alias py='python'
-alias pyclean='pyclean -v .'
+alias pyclean='pyclean -v . && find . -name *.pyc -delete'
 alias ttail='/usr/bin/tail'
 alias tail='colortail'
 alias eclipse='$(find ~ -name eclipse.ini -exec dirname {} + -quit)/eclipse'
