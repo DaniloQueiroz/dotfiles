@@ -215,12 +215,11 @@ function command_not_found_handle() {
         command ./${orig_cmd} $*
         return $?
     else
-        if [ -d ./.git ]; then
-            git help ${orig_cmd} > /dev/null
-            if [ $? -eq 0 ]; then
-               command git ${orig_cmd}
-               return $?
-           fi
+        # try to resolve as an git command/alias
+        $(git status &> /dev/null) && $(git help ${orig_cmd} &> /dev/null)
+        if [ $? -eq 0 ]; then
+            command git ${orig_cmd}
+            return $?
         fi
 
         cmd=$(/usr/lib/command-not-found ${orig_cmd} 2>&1 | head -n2 | /usr/bin/tail -n1 | awk -F\' '{ print $2 }')
@@ -275,14 +274,24 @@ alias c='clear'
 alias h='history'
 alias s='sed'
 alias v='vim'
-alias g='git-sh'
-alias gg='gitg . & &>/dev/null'
 alias pp='python -mjson.tool'
 alias py='python'
 alias pyclean='pyclean -v . && find . -name *.pyc -delete'
 alias ttail='/usr/bin/tail'
 alias tail='colortail'
 alias eclipse='$(find ~ -name eclipse.ini -exec dirname {} + -quit)/eclipse'
+
+# (g)it function
+alias gg='g gui'
+function g(){ 
+    if [ $# -eq 0 ]; then
+        git-sh
+    elif [ $1 = 'gui' ]; then
+        gitg . & &>/dev/null
+    else
+        git $*
+    fi
+}
 
 # Use vim as pager
 if [ -f /usr/share/vim/vim73/macros/less.sh ]
