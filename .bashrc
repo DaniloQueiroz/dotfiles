@@ -335,8 +335,9 @@ _gradle_complete()
     cur=`echo $cur | sed 's/\\\\//g'`
     COMPREPLY=($(compgen -W "${tasks}" ${cur} | sed 's/\\\\//g') )
 }
- 
 complete -F _gradle_complete -o filenames gradle
+export GRADLE_OPTS="-Dorg.gradle.daemon=true"
+alias gradle-stop='gradle --stop'
 
 
 # git prompt
