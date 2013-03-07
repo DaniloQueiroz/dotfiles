@@ -22,23 +22,34 @@ function show_diff() {
 }
 
 function home() {
+    if [ $# -ne 0 ]; then
+        files=$*
+    fi
+
     for file in $files; do
         rsync -crbv --suffix=.bak $file ~/$file
     done
 }
 
 function repo() {
+    if [ $# -ne 0 ]; then
+        files=$*
+    fi
+
     for file in $files; do
         rsync -crv ~/$file ./$file
     done
 }
 
-case $1 in
+cmd=$1
+shift
+
+case ${cmd} in
     'repo')
-        repo
+        repo $*
         ;;
     'home')
-        home
+        home $*
         ;;
     'diff')
         show_diff
