@@ -218,7 +218,7 @@ function command_not_found_handle() {
         # try to resolve as an git command/alias
         $(git status &> /dev/null) && $(git help ${orig_cmd} &> /dev/null)
         if [ $? -eq 0 ]; then
-            command git ${orig_cmd}
+            command git ${orig_cmd} $*
             return $?
         fi
 
