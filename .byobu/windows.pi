@@ -1,2 +1,2 @@
 chdir ~
-screen -t bzmediapi /bin/bash -c 'ssh pi@bzmediapi'
+screen -t bzmediapi /bin/bash -c 'ssh xbian@bzmediapi'
