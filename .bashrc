@@ -381,7 +381,7 @@ alias gradle-stop='gradle --stop'
 
 # git prompt
 function parse_git_dirty {
-    [[ $(git status 2> /dev/null | /usr/bin/tail -n1) != "nothing to commit (working directory clean)" ]] && echo " *"
+    [[ $(git status 2> /dev/null | /usr/bin/tail -n1) != "nothing to commit, working directory clean" ]] && echo " *"
 }
 function get_commit_count() {
     git status 2> /dev/null | awk '/Your branch is ahead/ {print " |"$(NF-1)}'
