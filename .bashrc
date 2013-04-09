@@ -305,24 +305,63 @@ if [ -f ~/.resty.sh ]; then
     source ~/.resty.sh
 fi
 
-
-## killall autocomplete 
-_killall ()
-{
-    local cur prev
-    COMPREPLY=()
-    cur=${COMP_WORDS[COMP_CWORD]}
-
-    # get a list of processes (the first sed evaluation
-    # takes care of swapped out processes, the second
-    # takes care of getting the basename of the process)
-    COMPREPLY=( $( /bin/ps -u $USER -o comm  | \
-        sed -e '1,1d' -e 's#[]\[]##g' -e 's#^.*/##'| \
-        awk '{if ($0 ~ /^'$cur'/) print $0}' ))
-
-    return 0
+# better pgrep 
+pgrep () {
+    if [ $1 == "-a" ]; then
+        params="aux"
+        shift
+    else
+        params="ux"
+    fi
+    ps ${params} | grep -v grep | grep $1 | awk '{ s = $2" "$1" "; for (i = 11; i <= NF; i++) s = s $i " "; print s }'
 }
-complete -F _killall killall
+
+# Add case-insensitive `killall` tab completion of running apps
+_complete_running_processes ()
+{
+	local LC_ALL='C'
+	local IFS=$'\n'
+	local cur=${COMP_WORDS[COMP_CWORD]}
+
+	COMPREPLY=()
+
+	# do not attempt completion if we're specifying an option
+	[[ "$cur" == -* ]] && return 0
+
+	# Escape dots in paths for grep
+	cur=${cur//\./\\\.}
+
+	COMPREPLY=( $(ps axc | /usr/bin/tail -n +2 | awk '{ print $5 }' | sort -u | grep -v "^[\-\(]" | grep -i "^$cur") )
+}
+complete -o bashdefault -o default -o nospace -F _complete_running_processes killall
+
+# Add case-insensitive `kill` tab completion of running apps
+_complete_running_processes_pids ()
+{
+	local re
+	local LC_ALL='C'
+	local IFS=$'\n'
+	local cur=${COMP_WORDS[COMP_CWORD]}
+
+	COMPREPLY=()
+
+	# do not attempt completion if we're specifying an option
+	[[ "$cur" == -* ]] && return 0
+
+	# Escape dots in paths for grep
+	cur=${cur//\./\\\.}
+
+	if [[ $cur != *[!0-9]* ]]; then
+		# search by PID
+		re="^$cur"
+	else
+		# search by process name
+		re="^[0-9]+ # $cur[^$]"
+	fi
+
+	COMPREPLY=( $(ps uxc | /usr/bin/tail -n +2 | awk '{ print $2" # " $11 }' | sort -u | grep -v "^[\-\(]" | egrep -i "$re") )
+}
+complete -o bashdefault -o default -o nospace -F _complete_running_processes_pids kill
 
 ## gradle autocomplete
 _gradle_complete()
@@ -342,7 +381,7 @@ alias gradle-stop='gradle --stop'
 
 # git prompt
 function parse_git_dirty {
-    [[ $(git status 2> /dev/null | ttail -n1) != "nothing to commit (working directory clean)" ]] && echo " *"
+    [[ $(git status 2> /dev/null | /usr/bin/tail -n1) != "nothing to commit (working directory clean)" ]] && echo " *"
 }
 function get_commit_count() {
     git status 2> /dev/null | awk '/Your branch is ahead/ {print " |"$(NF-1)}'
@@ -354,5 +393,7 @@ function show_colored_git_branch_in_prompt() {
     PS1=${PS1:0:-3}"\[\033[31m\]\$(git_branch_name)\[\033[m\]$ "
 }
 show_colored_git_branch_in_prompt
+
+
 
 
