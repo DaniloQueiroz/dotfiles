@@ -1,3 +1,5 @@
 source $BYOBU_PREFIX/share/byobu/keybindings/common
-escape ^Aa
+bindkey "^A"
+escape "^Aa"
+register x "^A"
 bindkey "^A"

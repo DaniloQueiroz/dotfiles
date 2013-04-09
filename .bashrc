@@ -370,7 +370,7 @@ _gradle_complete()
      
     COMPREPLY=()
     cur=${COMP_WORDS[COMP_CWORD]}
-    tasks='clean compile dists javadoc jar test war eclipse check'
+    tasks='clean compile dists javadoc jar test war eclipse check run dependencyUpdates'
     cur=`echo $cur | sed 's/\\\\//g'`
     COMPREPLY=($(compgen -W "${tasks}" ${cur} | sed 's/\\\\//g') )
 }
