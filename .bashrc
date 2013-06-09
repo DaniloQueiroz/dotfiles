@@ -280,7 +280,6 @@ alias py='python'
 alias pyclean='pyclean -v . && find . -name *.pyc -delete'
 alias ttail='/usr/bin/tail'
 alias tail='colortail'
-alias myip='curl http://ifconfig.me/ip'
 alias eclipse='$(find ~ -name eclipse.ini -exec dirname {} + -quit)/eclipse'
 
 # (g)it function

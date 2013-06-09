@@ -10,13 +10,14 @@
 	ci = commit
 	cl = clone
         rb = rebase
+        rbi = rebase -i
         cp=cherry-pick
         sh=stash
         ai=add --interactive
         sl=log --pretty=oneline --abbrev-commit
         l=log --graph --stat --abbrev-commit
         d=diff --color-words
-
+        wc = whatchanged
 [giggle]
 	main-window-maximized = true
 	main-window-geometry = 453x160+49+46
