@@ -1,5 +1,4 @@
 chdir ~
-screen -t home /bin/bash
+screen -t home /usr/bin/fish
 chdir ~/Programming/projects
-screen -t gitsh /usr/bin/git-sh
-screen -t bash /bin/bash
+screen -t shell /usr/bin/fish

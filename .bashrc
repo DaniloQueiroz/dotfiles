@@ -157,6 +157,7 @@ function cd() {
         builtin cd "$1"
     fi
 }
+alias log='colortail -f -n0' 
 
 # override help function - it now shows if the command is an alias,
 # tries the builtin help and finally calls the man
