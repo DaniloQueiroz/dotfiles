@@ -1,5 +1,5 @@
 # EDITOR
 set -U EDITOR vim
 # PYTHON no '.pyc' files
-set -U PYTHONDONTWRITEBYTECODE 'please_dont'
+set -Ux PYTHONDONTWRITEBYTECODE 'please_dont'
 

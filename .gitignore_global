@@ -9,3 +9,5 @@ build/
 .venv
 
 lieferheld_dev_danilo.py
+unit-tests.fish
+flake8.fish
