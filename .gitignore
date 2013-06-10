@@ -1,0 +1,9 @@
+.project
+.pydevproject
+.classpath
+.settings/
+.class
+.pyc
+.gradle/
+build/
+lieferheld_dev_danilo.py
