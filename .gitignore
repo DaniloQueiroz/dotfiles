@@ -7,3 +7,5 @@
 .gradle/
 build/
 lieferheld_dev_danilo.py
+.config/fish/fish_history
+.config/fish/fishd.d4bed9060700

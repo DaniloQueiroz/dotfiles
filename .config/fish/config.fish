@@ -2,3 +2,4 @@
 for conf in ~/.config/fish/conf.d/*.fish
     . $conf
 end
+
