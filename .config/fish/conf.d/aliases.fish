@@ -9,7 +9,6 @@ alias less '/usr/share/vim/vim73/macros/less.sh'
 # git aliases
 alias g 'git'
 alias gsh 'git-sh'
-alias gg 'git gui'
 alias st 'git st'
 alias sl 'git sl'
 alias log 'git log'
