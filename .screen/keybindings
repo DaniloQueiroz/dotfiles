@@ -1,0 +1,19 @@
+escape "^A"
+bindkey "^[[1;6D" eval 'prev' 'fit'			# ctrl-shift-left  | Previous Window
+bindkey "^[[1;6C" eval 'next' 'fit'			# ctrl-shift-right  | Next Window
+
+bindkey "^[[A" focus up		        	        # ctrl-shift-up | focus up
+bindkey "^[[B" focus down				# ctrl-shift-up | focus down
+bindkey -k k7 copy					# F7  | Enter copy/scrollback mode
+
+bindkey -k k6 detach					# F6  | Detach from this session
+
+bindkey "^[[1;5A" resize +1				# ctrl-up | resize +1
+bindkey "^[[1;5B" resize -1				# ctrl-down | resize -1
+bindkey "^[[1;5D" resize -1				# ctrl-left | resize -1
+bindkey "^[[1;5C" resize +1				# ctrl-right | resize +1
+
+register t "A^[OH^k^h"					#     | Goes with the F8 definition
+bindkey -k k8 eval 'process x' 'process t'		# F8  | Re-title a window
+
+

@@ -6,6 +6,8 @@ alias py 'python'
 alias taillog 'colortail -f -n0'
 alias LESS '/usr/bin/less -MQRSi'
 alias less '/usr/share/vim/vim73/macros/less.sh'
+alias pi-stats 'ssh xbian@bzmediapi "echo -n"'
+alias root 'sudo -i'
 # git aliases
 alias g 'git'
 alias gsh 'git-sh'

@@ -1,0 +1,2 @@
+chdir ~
+screen -t home /usr/bin/fish

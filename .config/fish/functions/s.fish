@@ -5,19 +5,18 @@ function s --description 'Manage multiple screen profiles for byobu'
 
     switch $argv
         case help
-            echo "Use 'screen list' to list sessions;"
-            echo "or 'screen  <window_name>' to start/connect to a given session"
+            echo "Use 's list' to list sessions;"
+            echo "or 's  <window_name>' to start/connect to a given session"
         case list
-            byobu -ls;
+            screen -ls;
         case '*'
-            set SCREEN_PROFILE $argv
+            set -x SCREEN_PROFILE $argv
             set SCREEN_SESSION (screen -ls | grep $SCREEN_PROFILE | awk '{ print $1 }')
             
             if not test -z $SCREEN_SESSION
                 screen -AOxRR $SCREEN_SESSION
             else
-                set -x BYOBU_WINDOWS $SCREEN_PROFILE
-                byobu -S $BYOBU_WINDOWS
+                screen -c $HOME/.screen/screenrc -t '' -S $SCREEN_PROFILE
             end
             set -e SCREEN_PROFILE
             set -e SCREEN_SESSION
