@@ -13,12 +13,12 @@
 	cl = clone
         rb = rebase
         rbi = rebase -i
-        cp=cherry-pick
-        sh=stash
-        ai=add --interactive
-        sl=log --pretty=oneline --abbrev-commit
-        l=log --graph --stat --abbrev-commit
-        d=diff --color-words
+        cp = cherry-pick
+        sh = stash
+        ai = add --interactive
+        sl = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit
+        l = log --graph --stat --abbrev-commit
+        d = diff --color-words
         wc = whatchanged
 [giggle]
 	main-window-maximized = true
