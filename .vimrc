@@ -1,3 +1,5 @@
+" set vim shell to bash
+set shell=/bin/bash
 " set color scheme
 colorscheme desert
 " set spell lang
