@@ -42,7 +42,8 @@ fit
 
 # Window tabs, second to last line
 #caption always "%1001`%?%-Lw%50L>%?%{=r}%n*%f %t%?(%u)%?%{-}%12`%?%+Lw%?%11` %=%12`%1002`%10`%<"
+caption always "[%h]"
 
 # Status string, last line
 #hardstatus string "#%n [%h]%? %t"
-hardstatus string "%{= kB}%-Lw%{=s kB}%50>%n%f* %t %{-}%+Lw%< [%h]"
+hardstatus string "%{= kB}%-Lw%{=s kB}%50>%n%f* %t %{-}%+Lw%<"
