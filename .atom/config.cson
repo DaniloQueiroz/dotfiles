@@ -1,0 +1,30 @@
+'exception-reporting':
+  'userId': '18f62e83-6cd9-6411-6247-4ce5ceb9e6b2'
+'welcome':
+  'showOnStartup': false
+'metrics': false
+'editor':
+  'fontSize': 16
+  'showIndentGuide': true
+  'showInvisibles': true
+  'tabLength': 4
+  'softWrap': true
+  'softWrapAtPreferredLineLength': true
+  'preferredLineLength': 100
+  'fontFamily': 'Ubuntu'
+'core':
+  'disabledPackages': [
+    'feedback'
+    'exception-reporting'
+  ]
+  'themes': [
+    'atom-dark-ui'
+    'monokai'
+  ]
+'whitespace':
+  'ignoreWhitespaceOnCurrentLine': false
+  'ensureSingleTrailingNewline': false
+'find-and-replace': {}
+'jsonlint':
+  'validateOnChange': true
+'tree-view': {}
