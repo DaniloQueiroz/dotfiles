@@ -33,6 +33,7 @@ alias fetch 'git fetch'
 alias bisect 'git bisect'
 alias reflog 'git reflog'
 alias merge 'git merge'
+alias tag 'git tag'
 # development aliases
 alias tests './tests.fish'
 alias build './build.fish'

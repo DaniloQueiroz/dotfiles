@@ -1,4 +1,6 @@
-chdir ~
+chdir $HOME
 screen -t home /usr/bin/fish
-chdir ~/Programming/projects
+
+chdir Programming/projects
 screen -t shell /usr/bin/fish
+
