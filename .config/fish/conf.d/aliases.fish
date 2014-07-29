@@ -11,7 +11,7 @@ alias root 'sudo -i'
 # git aliases
 alias g 'git'
 alias gsh 'git-sh'
-alias st 'git st'
+alias st 'git st -s'
 alias sl 'git sl'
 alias log 'git log'
 alias l 'git l'
