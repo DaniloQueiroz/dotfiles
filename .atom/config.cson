@@ -4,13 +4,13 @@
   'showOnStartup': false
 'metrics': false
 'editor':
-  'fontSize': 16
   'showIndentGuide': true
   'showInvisibles': true
   'tabLength': 4
   'softWrap': true
   'softWrapAtPreferredLineLength': true
   'preferredLineLength': 100
+  'lineHeight': 'Default: 1'
   'fontFamily': 'Ubuntu'
 'core':
   'disabledPackages': [
