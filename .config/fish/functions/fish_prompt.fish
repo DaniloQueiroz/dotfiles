@@ -6,6 +6,11 @@ function fish_prompt --description 'Write out the prompt'
     echo -n -s (set_color -b blue white) "(" (basename "$VIRTUAL_ENV") ")" (set_color normal) " "
   end
 
+  # RVM
+  if set -q rvm_version
+    echo -n -s (set_color -b blue white) "(" (rvm-prompt) ")" (set_color normal) " "
+  end
+
   # User
   set_color $fish_color_user
   echo -n (whoami)
