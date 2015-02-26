@@ -6,12 +6,16 @@
 .pyc
 .gradle/
 build/
+bin/
 .venv
 *.iml
+.cache
 
-lieferheld_dev_danilo.py
 clean.fish
 tests.fish
 check.fish
 build.fish
 run.fish
+
+.ruby-gemset
+.ruby-version

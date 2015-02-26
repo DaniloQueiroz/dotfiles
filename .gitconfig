@@ -1,34 +1,45 @@
 [core]
-        excludesfile = ~/.gitignore_global
+  excludesfile = ~/.gitignore_global
 [color]
-	ui = auto
+  ui = true
+[color "branch"]
+  current = yellow reverse
+  local = yellow
+  remote = green
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old = red
+  new = green
 [user]
 	name = Danilo Penna Queiroz
 	email = dpenna.queiroz@gmail.com
 [alias]
-	st = status
-	co = checkout
-	br = branch
-	ci = commit
-	cl = clone
-        rb = rebase
-        rbi = rebase -i
-        cp = cherry-pick
-        sh = stash
-        ai = add --interactive
-        sl = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit
-        l = log --graph --stat --abbrev-commit
-        d = diff --color-words
-        wc = whatchanged
+  st = status
+  co = checkout
+  br = branch -v
+  ci = commit
+  cl = clone
+  rb = rebase
+  rbi = rebase -i
+  rbc = rebase -i
+  cp = cherry-pick
+  sh = stash
+  ai = add --interactive
+  sl = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit
+  l = log --graph --stat --abbrev-commit
+  d = diff --color-words
+  wc = whatchanged
+  fetch = fetch --all --tags --prune
 [giggle]
-	main-window-maximized = true
-	main-window-geometry = 453x160+49+46
-	main-window-view = FileView
-	file-view-vpane-position = 331
-	history-view-vpane-position = 621
+  main-window-maximized = true
+  main-window-geometry = 453x160+49+46
+  main-window-view = FileView
+  file-view-vpane-position = 331
+  history-view-vpane-position = 621
 [rebase]
-	autosquash = true
+  autosquash = true
 [diff]
-	tool = meld
+  tool = meld
 [push]
-	default = simple
+  default = simple
