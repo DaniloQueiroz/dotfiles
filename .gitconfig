@@ -15,14 +15,12 @@
 	name = Danilo Penna Queiroz
 	email = dpenna.queiroz@gmail.com
 [alias]
-  st = status
+  st = status -bs
   co = checkout
   br = branch -v
   ci = commit
   cl = clone
   rb = rebase
-  rbi = rebase -i
-  rbc = rebase -i
   cp = cherry-pick
   sh = stash
   ai = add --interactive

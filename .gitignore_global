@@ -5,6 +5,7 @@
 .class
 .pyc
 .gradle/
+sbt/
 build/
 bin/
 .venv
