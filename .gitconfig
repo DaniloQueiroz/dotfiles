@@ -28,7 +28,7 @@
   l = log --graph --stat --abbrev-commit
   d = diff --color-words
   wc = whatchanged
-  fetch = fetch --all --tags --prune
+  f = fetch --all --tags --prune -v
 [giggle]
   main-window-maximized = true
   main-window-geometry = 453x160+49+46
