@@ -41,3 +41,5 @@
   tool = meld
 [push]
   default = simple
+[branch]
+  autosetuprebase = always

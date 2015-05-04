@@ -11,6 +11,7 @@ bin/
 .venv
 *.iml
 .cache
+.buildpath
 
 clean.fish
 tests.fish
