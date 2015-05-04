@@ -1,0 +1,61 @@
+background yes
+use_xft yes
+xftfont Ubuntu:size=8
+xftalpha 0
+update_interval 1.5
+total_run_times 0
+own_window_argb_visual true
+own_window_argb_value 150
+own_window yes
+own_window_transparent no
+own_window_type normal
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+double_buffer yes
+minimum_size 200 200
+maximum_width 200
+draw_shades no
+draw_outline no
+draw_borders no
+draw_graph_borders yes
+default_color LightGrey
+default_shade_color black
+default_outline_color white
+alignment top_right
+gap_x 7
+gap_y 33
+no_buffers yes
+uppercase no
+cpu_avg_samples 2
+override_utf8_locale no
+
+TEXT
+${font ubuntu:bold:size=9}PROCESSOR ${hr 2}
+${font ubuntu:regular:size=8}CPU1: ${cpu cpu0}% ${alignr 15} CPU2: ${cpu cpu1}% 
+CPU3: ${cpu cpu2}% ${alignr 15} CPU4: ${cpu cpu3}% 
+CPU Frequency: ${freq_g} GHz
+CPU Temp: ${exec sensors | grep Physical | awk '{print $4}'}
+
+${font ubuntu:bold:size=9}MEMORY ${hr 2}
+${font ubuntu:regular:size=8}Ram $alignc $mem / $memmax $alignr $memperc%
+Swap $alignc $swap / $swapmax $alignr $swapperc%
+
+${font ubuntu:bold:size=9}DISKS ${hr 2}
+${font ubuntu:regular:size=8}/ $alignc ${fs_used /} / ${fs_size /} $alignr ${fs_used_perc /}%
+/home $alignc ${fs_used /home} / ${fs_size /home} $alignr ${fs_used_perc /home}%
+
+${font ubuntu:bold:size=9}NETWORK ${hr 2}
+${font ubuntu:regular:size=8}IP address: $alignr ${addr wlan0}
+ESSID: $alignr ${wireless_essid wlan0}
+Connection quality: $alignr ${wireless_link_qual_perc wlan0}%
+${downspeedgraph wlan0}
+DLS: ${downspeed wlan0} kb/s $alignr total: ${totaldown wlan0}
+${upspeedgraph wlan0}
+ULS: ${upspeed wlan0} kb/s $alignr total: ${totalup wlan0}
+
+${font ubuntu:bold:size=9}IP ${hr 2}
+${font ubuntu:regular:size=8}Public IP: ${exec http -b get http://ifconfig.me/ip.json } 
+${font ubuntu:regular:size=8}Internal IP: ${exec ip addr show | grep -vE "lo\$" | grep -v inet6 | grep inet | awk '{ print $2 }' }
+
+${font ubuntu:bold:size=9}Ping ${hr 2}
+${font ubuntu:regular:size=8}8.8.8.8: ${exec ping -c 1 8.8.8.8 | grep time= | awk -F'time=' '{ print $2 }'}
+google.com: ${exec ping -c 1 google.com | grep time= | awk -F'time=' '{ print $2 }'}
