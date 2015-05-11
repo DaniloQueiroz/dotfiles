@@ -1,58 +1,16 @@
 # VirtualFish
 # A Virtualenv wrapper for the Fish Shell based on Doug Hellman's virtualenvwrapper
-
-if not set -q VIRTUALFISH_HOME
-	set -g VIRTUALFISH_HOME $HOME/.virtualenvs
-end
-
-if set -q VIRTUALFISH_COMPAT_ALIASES
-        function workon
-                if not set -q argv[1]
-                    vf ls
-                else
-                    vf activate $argv[1]
-                end
-        end
-        function deactivate
-                vf deactivate
-        end
-        function mktmpenv
-                vf tmp $argv
-        end
-        function mkvirtualenv
-                # Check if the first argument is an option to virtualenv
-                # if it is then the the last argument must be the DEST_DIR.
-                set -l idx 1
-                switch $argv[1]
-                        case '-*'
-                                set idx -1
-                end
-
-                # Extract the DEST_DIR and remove it from $argv
-                set -l env_name $argv[$idx]
-                set -e argv[$idx]
-
-                vf new $argv $env_name
-        end
-        function rmvirtualenv
-                vf rm $argv
-        end
-        function add2virtualenv
-        	__vf_addpath $argv
-        end
-        function cdvirtualenv
-        	vf cd $argv
-        end
-        function cdsitepackages
-        	vf cdpackages $argv
-        end
-end
-
 function vf --description "VirtualFish: fish plugin to manage virtualenvs"
 	# copy all but the first argument to $scargs
 	set -l sc $argv[1]
 	set -l funcname "__vf_$sc"
 	set -l scargs
+
+	if begin; [ (count $argv) -eq 0 ]; or [ $sc = "--help" ]; or [ $sc = "-h" ]; end
+		# If called without arguments, print usage
+		vf help
+		return
+	end
 
 	if test (count $argv) -gt 1
 		set scargs $argv[2..-1]
@@ -82,10 +40,13 @@ function __vf_activate --description "Activate a virtualenv"
 		vf deactivate
 	end
 
+    # Set VIRTUAL_ENV before the others so that the will_activate event knows
+    # which virtualenv is about to be activated
+	set -gx VIRTUAL_ENV $VIRTUALFISH_HOME/$argv[1]
+
 	emit virtualenv_will_activate
 	emit virtualenv_will_activate:$argv[1]
 
-	set -gx VIRTUAL_ENV $VIRTUALFISH_HOME/$argv[1]
 	set -g _VF_EXTRA_PATH $VIRTUAL_ENV/bin
 	set -gx PATH $_VF_EXTRA_PATH $PATH
 
@@ -99,7 +60,12 @@ function __vf_activate --description "Activate a virtualenv"
 	emit virtualenv_did_activate:(basename $VIRTUAL_ENV)
 end
 
-function __vf_deactivate --description "Deactivate the currently-activated virtualenv"
+function __vf_deactivate --description "Deactivate this virtualenv"
+
+    if not set -q VIRTUAL_ENV
+        echo "No virtualenv is activated."
+        return
+    end
 
 	emit virtualenv_will_deactivate
 	emit virtualenv_will_deactivate:(basename $VIRTUAL_ENV)
@@ -167,7 +133,7 @@ function __vf_ls --description "List all of the available virtualenvs"
 	popd
 end
 
-function __vf_cd --description "Change directory to currently-activated virtualenv"
+function __vf_cd --description "Change directory to this virtualenv"
     if set -q VIRTUAL_ENV
         cd $VIRTUAL_ENV
     else
@@ -175,21 +141,12 @@ function __vf_cd --description "Change directory to currently-activated virtuale
     end
 end
 
-function __vf_cdpackages --description "Change to the site-packages directory of the active virtualenv"
+function __vf_cdpackages --description "Change to the site-packages directory of this virtualenv"
 	vf cd
 	cd lib/python*/site-packages
 end
 
-
-function __vf_connect --description "Connect this virtualenv to the current directory"
-	if set -q VIRTUAL_ENV
-		basename $VIRTUAL_ENV > $VIRTUALFISH_ACTIVATION_FILE
-	else
-		echo "No virtualenv is active."
-	end
-end
-
-function __vf_tmp --description "Create a temporary virtualenv that will be removed when deactivated"
+function __vf_tmp --description "Create a virtualenv that will be removed when deactivated"
 	set -l env_name (printf "%s%.4x" "tempenv-" (random) (random) (random))
     set -g VF_TEMPORARY_ENV
 
@@ -248,69 +205,59 @@ function __vf_addpath --description "Adds a path to sys.path in this virtualenv"
 	end
 end
 
-################
-# Deactivate hook
-function __vf_setup_deactivate_alias --on-event virtualenv_did_activate
-    if test -f $VIRTUAL_ENV/bin/postactivate.fish
-        . $VIRTUAL_ENV/bin/postactivate.fish
+function __vf_all --description "Run a command in all virtualenvs sequentially"
+	if test (count $argv) -lt 1
+        echo "You need to supply a command."
+        return 1
     end
-    alias deactivate 'vf deactivate; and functions -e deactivate'
+
+    if set -q VIRTUAL_ENV
+        set -l old_env (basename $VIRTUAL_ENV)
+    end
+
+    for env in (vf ls)
+        vf activate $env
+        eval $argv
+    end
+
+    if set -q old_env
+        vf activate $old_env
+    end
 end
 
-################
-# Automatic activation
+# 'vf connect' command
+# Used by the project management and auto-activation plugins
 
 if not set -q VIRTUALFISH_ACTIVATION_FILE
     set -g VIRTUALFISH_ACTIVATION_FILE .venv
 end
 
-function __vfsupport_auto_activate --on-variable PWD
-    if status --is-command-substitution
-        return
-    end
 
-    # find an auto-activation file
-    set -l activation_root $PWD
-    set -l new_virtualenv_name ""
-    while test $activation_root != ""
-        if test -f "$activation_root/$VIRTUALFISH_ACTIVATION_FILE"
-            set new_virtualenv_name (cat "$activation_root/$VIRTUALFISH_ACTIVATION_FILE")
-            break
-        end
-        # this strips the last path component from the path.
-        set activation_root (echo $activation_root | sed 's|/[^/]*$||')
-    end
-
-
-    if test $new_virtualenv_name != ""
-        # if the virtualenv in the file is different, switch to it
-        if begin; not set -q VIRTUAL_ENV; or test $new_virtualenv_name != (basename $VIRTUAL_ENV); end
-            vf activate $new_virtualenv_name
-            set -g VF_AUTO_ACTIVATED $activation_root
-        end
+function __vf_connect --description "Connect this virtualenv to the current directory"
+    if set -q VIRTUAL_ENV
+        basename $VIRTUAL_ENV > $VIRTUALFISH_ACTIVATION_FILE
     else
-        # if there's an auto-activated virtualenv, deactivate it
-        if set -q VIRTUAL_ENV VF_AUTO_ACTIVATED
-            vf deactivate
-        end
+        echo "No virtualenv is active."
     end
 end
 
-# remove the auto-activation flag on deactivation
-function __vfsupport_deactivate_remove_flag --on-event virtualenv_did_deactivate
-    # remove autoactivated flag
-    if set -q VF_AUTO_ACTIVATED
-        set -e VF_AUTO_ACTIVATED
-    end
+function __vf_help --description "Print VirtualFish usage information"
+	echo "Usage: vf <command> [<args>]"
+	echo
+	echo "Available commands:"
+	echo
+	for sc in (functions -a | sed -n '/__vf_/{s///g;p;}')
+		set -l helptext (functions "__vf_$sc" | head -n 1 | sed -E "s|.*'(.*)'.*|\1|")
+		printf "    %-15s %s\n" $sc (set_color 555)$helptext(set_color normal)
+	end
+	echo
+	echo "For full documentation, see: http://virtualfish.readthedocs.org/en/latest/"
 end
-
-#automatically activate if started in a directory with a virtualenv in it
-__vfsupport_auto_activate
 
 ################
 # Autocomplete
 # Based on https://github.com/zmalltalker/fish-nuggets/blob/master/completions/git.fish
-begin
+function __vfsupport_setup_autocomplete --on-event virtualfish_did_setup_plugins
 	function __vfcompletion_needs_command
 		set cmd (commandline -opc)
 			if test (count $cmd) -eq 1 -a $cmd[1] = 'vf'
@@ -337,9 +284,4 @@ begin
 
 	complete -x -c vf -n '__vfcompletion_using_command activate' -a "(vf ls)"
 	complete -x -c vf -n '__vfcompletion_using_command rm' -a "(vf ls)"
-    if set -q VIRTUALFISH_COMPAT_ALIASES
-        complete -x -c workon -a "(vf ls)"
-        complete -x -c rmvirtualenv -a "(vf ls)"
-    end
 end
-
