@@ -40,6 +40,6 @@
 [diff]
   tool = meld
 [push]
-  default = simple
+  default = current
 [branch]
   autosetuprebase = always
