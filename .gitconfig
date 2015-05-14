@@ -1,5 +1,31 @@
+[user]
+  name = Danilo Penna Queiroz
+  email = dpenna.queiroz@gmail.com
+[alias]
+  st = status -bs
+  co = checkout
+  br = branch -v
+  ci = commit
+  cl = clone
+  rb = rebase
+  cp = cherry-pick
+  ai = add --interactive
+  sl = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit
+  l = log --graph --stat --abbrev-commit
+  d = diff --color-words
+  wc = whatchanged
+  f = fetch --all --tags --prune -v
+[push]
+  default = current
+[branch]
+  autosetuprebase = always
+[rebase]
+  autosquash = true
+[diff]
+  tool = meld
 [core]
   excludesfile = ~/.gitignore_global
+  editor = vim
 [color]
   ui = true
 [color "branch"]
@@ -11,35 +37,4 @@
   frag = magenta bold
   old = red
   new = green
-[user]
-	name = Danilo Penna Queiroz
-	email = dpenna.queiroz@gmail.com
-[alias]
-  st = status -bs
-  co = checkout
-  br = branch -v
-  ci = commit
-  cl = clone
-  rb = rebase
-  cp = cherry-pick
-  sh = stash
-  ai = add --interactive
-  sl = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit
-  l = log --graph --stat --abbrev-commit
-  d = diff --color-words
-  wc = whatchanged
-  f = fetch --all --tags --prune -v
-[giggle]
-  main-window-maximized = true
-  main-window-geometry = 453x160+49+46
-  main-window-view = FileView
-  file-view-vpane-position = 331
-  history-view-vpane-position = 621
-[rebase]
-  autosquash = true
-[diff]
-  tool = meld
-[push]
-  default = current
-[branch]
-  autosetuprebase = always
+
