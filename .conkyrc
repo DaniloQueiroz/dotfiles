@@ -8,6 +8,7 @@ own_window_argb_value 150
 own_window_transparent no
 own_window_type normal
 own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+alignment top_right
 
 
 -- Font config
@@ -26,11 +27,12 @@ draw_shades no
 draw_outline no
 draw_borders no
 
-alignment middle_right
-cpu_avg_samples 2
+-- General config / update, n samples
 update_interval 1.5
+cpu_avg_samples 2
 total_run_times 0
 
+-- Content
 TEXT
 ${font ubuntu:bold:size=10}${color Tan1}${nodename}${color}
 ${font ubuntu:bold:size=9}
