@@ -58,6 +58,8 @@ function __vf_activate --description "Activate a virtualenv"
 
 	emit virtualenv_did_activate
 	emit virtualenv_did_activate:(basename $VIRTUAL_ENV)
+
+	alias deactivate 'vf deactivate'
 end
 
 function __vf_deactivate --description "Deactivate this virtualenv"
@@ -93,6 +95,7 @@ function __vf_deactivate --description "Deactivate this virtualenv"
 	emit virtualenv_did_deactivate:(basename $VIRTUAL_ENV)
 
 	set -e VIRTUAL_ENV
+	functions -e deactivate
 end
 
 function __vf_new --description "Create a new virtualenv"

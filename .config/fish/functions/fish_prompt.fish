@@ -8,7 +8,9 @@ function fish_prompt --description 'Write out the prompt'
 
   # RVM
   if set -q rvm_version
-    echo -n -s (set_color -b blue white) "(" (rvm-prompt) ")" (set_color normal) " "
+    if test -n (rvm-prompt g)
+        echo -n -s (set_color -b blue white) "(" (rvm-prompt) ")" (set_color normal) " "
+    end
   end
 
   # User
@@ -30,12 +32,14 @@ function fish_prompt --description 'Write out the prompt'
   echo -n (prompt_pwd)
   set_color normal
 
+  # GIT
   __terlar_git_prompt
 
   if not test $last_status -eq 0
     set_color $fish_color_error
   end
 
+  # Prompt
   echo -n ' ➤ '
   set_color normal
 end

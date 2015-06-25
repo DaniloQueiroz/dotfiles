@@ -21,3 +21,5 @@ set -xU LESS_TERMCAP_so (printf "\e[01;44;33m")   # begin standout-mode - info b
 set -xU LESS_TERMCAP_ue (printf "\e[0m")          # end underline
 set -xU LESS_TERMCAP_us (printf "\e[01;32m")      # begin underline
 
+# load on_pwd_changed handle
+on_pwd_changed
