@@ -1,7 +1,7 @@
--- Fork application to background
+# Fork application to background
 background yes
 
--- Windows config
+# Windows config
 own_window yes
 own_window_argb_visual true
 own_window_argb_value 150
@@ -11,28 +11,28 @@ own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
 alignment top_right
 
 
--- Font config
+# Font config
 use_xft yes
 xftfont Ubuntu:size=8
 xftalpha 0
 override_utf8_locale yes
 
--- Colors
+# Colors
 default_color white
 default_shade_color lightgrey
 
 
--- Border and shades
+# Border and shades
 draw_shades no
 draw_outline no
 draw_borders no
 
--- General config / update, n samples
+# General config / update, n samples
 update_interval 1.5
 cpu_avg_samples 2
 total_run_times 0
 
--- Content
+# Content
 TEXT
 ${font ubuntu:bold:size=10}${color Tan1}${nodename}${color}
 ${font ubuntu:bold:size=9}
