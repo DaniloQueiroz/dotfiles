@@ -1,6 +1,6 @@
 #! /bin/bash
 
-files='.config/fish/ .screen/* .vimrc .gitconfig .gitignore_global .xchat2/xchat.conf .xchat2/keybindings.conf .ackrc .conkyrc .todo/'
+files='.config/fish/ .screen/* .vimrc .gitconfig .gitignore_global .xchat2/xchat.conf .xchat2/keybindings.conf .ackrc .conkyrc .todo/ tools/todo.txt/'
 
 function wrong_usage() {
     printf "wrong usage: you should use 'home' or 'repo' as parameter:\n"
