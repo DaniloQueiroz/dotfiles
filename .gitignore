@@ -7,3 +7,6 @@
 .atom/compile-cache/
 .atom/packages
 .atom/.node-gyp/
+.todo/done.txt
+.todo/report.txt
+.todo/todo.txt
