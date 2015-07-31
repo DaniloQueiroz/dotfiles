@@ -1,5 +1,4 @@
 #!/usr/bin/fish
-
 alias todo "~/tools/todo.txt/todo.sh"
 
 complete -c todo -s @ --description "Hide context names in list output"
@@ -58,4 +57,3 @@ complete -c todo --description "Context" -a "(todo.sh listcon)"
 complete -c todo --description "Context" -a "(cat ~/.todo/Contexts.txt | cut -f 1 -d ' ')"
 complete -c todo --description "Project" -a "(todo.sh listproj)"
 complete -c todo --description "Project" -a "(cat ~/.todo/Projects.txt | cut -f 1 -d ' ')"
-

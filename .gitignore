@@ -10,3 +10,5 @@
 .todo/done.txt
 .todo/report.txt
 .todo/todo.txt
+id_rsa*
+known_hosts
