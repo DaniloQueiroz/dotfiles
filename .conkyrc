@@ -66,3 +66,4 @@ ${font ubuntu:bold:size=8}    ESSID:  ${font}${wireless_essid wlan0}
 ${font ubuntu:bold:size=8}    Connection quality: ${font}${wireless_link_qual_perc wlan0}%
 ${font ubuntu:bold:size=8}    Dowload Speed: ${font}${downspeed wlan0} kb/s
 ${font ubuntu:bold:size=8}    Upload Speed: ${font}${upspeed wlan0} kb/s
+
