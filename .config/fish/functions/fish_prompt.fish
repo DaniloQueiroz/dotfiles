@@ -3,7 +3,7 @@ function fish_prompt --description 'Write out the prompt'
 
   # Virtualenv
   if set -q VIRTUAL_ENV
-    echo -n -s (set_color -b blue white) "(" (basename "$VIRTUAL_ENV") ")" (set_color normal) " "
+    echo -n -s (set_color -b blue white) "(" (python --version 2>&1)@(basename "$VIRTUAL_ENV") ")" (set_color normal) " "
   end
 
   # RVM
