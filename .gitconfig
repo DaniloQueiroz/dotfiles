@@ -38,3 +38,5 @@
   old = red
   new = green
 
+[commit]
+	template = /home/danilo/.git_commit_msg

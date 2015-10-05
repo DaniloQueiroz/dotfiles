@@ -21,3 +21,5 @@ run.fish
 
 .ruby-gemset
 .ruby-version
+.cache-main
+.cache-tests
