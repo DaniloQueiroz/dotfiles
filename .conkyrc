@@ -39,7 +39,7 @@ ${font ubuntu:bold:size=9}
 Linux ${kernel} ${machine}
 Uptime ${uptime}
 
-${font ubuntu:bold:size=9}${color Tan1}PROCESSOR ${color} ${hr 2}
+${font ubuntu:bold:size=9}${color Tan1}PROCESSOR ${color white} ${hr 2}
 ${font ubuntu:bold:size=8}  CPU: ${font}${cpu cpu0}%
 ${font ubuntu:bold:size=8}  CPU Temp: ${font}${exec sensors | grep Physical | awk '{print $4}'}
 ${font ubuntu:bold:size=8}  CPU Frequency: ${font}${freq_g} GHz
@@ -61,9 +61,10 @@ ${font ubuntu:bold:size=8}    Dowload Speed: ${font}${downspeed eth0} kb/s
 ${font ubuntu:bold:size=8}    Upload Speed: ${font}${upspeed eth0} kb/s
 
 ${font ubuntu:bold:size=8}  WLan0
-${font ubuntu:bold:size=8}    WLan0 Address: ${font}${addrs wlan0}
-${font ubuntu:bold:size=8}    ESSID:  ${font}${wireless_essid wlan0}
-${font ubuntu:bold:size=8}    Connection quality: ${font}${wireless_link_qual_perc wlan0}%
-${font ubuntu:bold:size=8}    Dowload Speed: ${font}${downspeed wlan0} kb/s
-${font ubuntu:bold:size=8}    Upload Speed: ${font}${upspeed wlan0} kb/s
+${font ubuntu:bold:size=8}    WLan0 Address: ${font}${addrs wlp3s0}
+${font ubuntu:bold:size=8}    ESSID:  ${font}${wireless_essid wlp3s0}
+${font ubuntu:bold:size=8}    Frequency:  ${font}${exec iwconfig wlp3s0|grep Frequency | awk '/:/ { print $2" " $3 }' | cut -d':' -f2 }
+${font ubuntu:bold:size=8}    Connection quality: ${font}${wireless_link_qual_perc wlp3s0}%
+${font ubuntu:bold:size=8}    Dowload Speed: ${font}${downspeed wlp3s0} kb/s
+${font ubuntu:bold:size=8}    Upload Speed: ${font}${upspeed wlp3s0} kb/s
 
