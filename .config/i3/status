@@ -1,15 +1,15 @@
 general {
   output_format = "i3bar"
   colors = true
-  interval = 5
+  interval = 3
 }
 
 order += "disk /"
 order += "disk /home"
 order += "wireless wlp3s0"
 order += "path_exists VPN"
-order += "battery 0"
 order += "battery 1"
+order += "battery 0"
 order += "cpu_usage"
 #order += "cpu_temperature 0"
 order += "volume master"

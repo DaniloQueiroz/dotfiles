@@ -1,4 +1,6 @@
+# General settings
 set $mod Mod4
+set $LOCKER dm-tool lock
 font pango:DejaVu Sans Mono 10
 
 ### Workspaces
@@ -7,13 +9,14 @@ assign [class="HexChat"] 4
 assign [class="Spotify"] 5
 
 ### Commands keybinds
-set $LOCKER dm-tool lock
 bindsym $mod+l exec $LOCKER
 bindsym $mod+Shift+r restart
 bindsym $mod+F1 exec pcmanfm
 bindsym $mod+F2 exec firefox
 bindsym $mod+F3 exec /home/danilo/tools/eclipse-mars/eclipse
 bindsym $mod+F4 exec atom ~/Documents/notes
+# System tools
+bindsym $mod+F11 exec pavucontrol
 bindsym $mod+F12 exec lxrandr
 
 ### Startup programs
@@ -27,13 +30,11 @@ exec --no-startup-id /usr/bin/setxkbmap -model thinkpad60 -layout br
 exec --no-startup-id xinput --set-prop "SynPS/2 Synaptics TouchPad" "Synaptics Scrolling Distance" -99 -99
 # turn screen off after 600 secons
 exec --no-startup-id xset dpms 600 
-# dunst notifications
-exec --no-startup-id dunst -config ~/.config/i3/notifications
+# applets/indicators
 exec --no-startup-id nm-applet
 exec --no-startup-id /home/danilo/tools/btsync/btsync_indicator.py
 
 ### Keybinds
-bindsym $mod+n bar mode toggle
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id bash /home/danilo/tools/utils/volumectl up
 bindsym XF86AudioLowerVolume exec --no-startup-id bash /home/danilo/tools/utils/volumectl down
@@ -45,8 +46,11 @@ bindsym XF86AudioNext exec --no-startup-id bash /home/danilo/tools/utils/spotify
 bindsym XF86AudioPrev exec --no-startup-id bash /home/danilo/tools/utils/spotifyctl prev
 
 # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight -inc 20
-bindsym XF86MonBrightnessDown exec xbacklight -dec 20
+bindsym XF86MonBrightnessUp exec xbacklight -inc 10
+bindsym XF86MonBrightnessDown exec xbacklight -dec 10
+
+# toggle bar mode
+bindsym $mod+n bar mode toggle
 
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
@@ -105,8 +109,8 @@ bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
 
 #Browse through workspaces
-bindsym Mod1+Mod4+Left workspace prev
-bindsym Mod1+Mod4+Right workspace next
+bindsym Ctrl+Mod4+Left workspace prev
+bindsym Ctrl+Mod4+Right workspace next
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1
@@ -129,22 +133,11 @@ mode "resize" {
         bindsym Right resize grow width 10 px or 10 ppt
         # back to normal: Enter or Escape
         bindsym Escape mode "default"
-
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        #bindsym j resize shrink width 10 px or 10 ppt
-        #bindsym k resize grow height 10 px or 10 ppt
-        #bindsym l resize shrink height 10 px or 10 ppt
-        #bindsym ccedilla resize grow width 10 px or 10 ppt
-        #bindsym Escape mode "default"
 }
 
 bindsym $mod+r mode "resize"
 
-### System Mod
-
+### System Mode
 set $mode_system System (l) lock, (e) logout, (s) suspend, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
     bindsym l exec $LOCKER, mode "default"
@@ -159,8 +152,6 @@ mode "$mode_system" {
 bindsym $mod+Delete mode "$mode_system"
 
 ### StatusBar
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
 bar {
         status_command i3status -c ~/.config/i3/status
         tray_output primary
