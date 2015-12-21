@@ -1,0 +1,23 @@
+#!/bin/bash
+SINK=$(pactl info | awk '/^Default Sink:/ { print $3 }')
+SOURCE=$(pactl info | awk '/^Default Source:/ { print $3 }')
+
+case $1 in
+    up)
+        pactl set-sink-volume $SINK +5%
+        ;;
+    down)
+        pactl set-sink-volume $SINK -5%
+        ;;
+    mute)
+        pactl set-sink-mute $SINK toggle
+        ;;
+    mic)
+        pactl set-source-mute $SOURCE toggle
+        ;;
+    *)
+        echo "Usage: $0 [up|down|mute|mic]"
+        exit 1
+        ;;
+esac
+
