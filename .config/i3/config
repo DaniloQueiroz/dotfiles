@@ -1,7 +1,15 @@
 # General settings
 set $mod Mod4
 set $LOCKER dm-tool lock
-font pango:DejaVu Sans Mono 10
+font pango:Ubuntu 10
+new_float pixel 1
+hide_edge_borders both
+#colors:                border  backgr. text    indicator
+client.focused #0088CC #0088CC #ffffff #dddddd
+client.focused_inactive #333333 #333333 #888888 #292d2e
+client.unfocused #333333 #333333 #888888 #292d2e
+client.urgent #2f343a #900000 #ffffff #900000
+
 
 ### Workspaces
 assign [class="HipChat"] 3
@@ -156,6 +164,18 @@ bar {
         status_command i3status -c ~/.config/i3/status
         tray_output primary
         tray_padding 2
+        separator_symbol ⁝
+        colors {
+                background #001b28
+                separator  #ffffff
+                statusline #329fd6
+
+                focused_workspace  #44bbff #3276E8 #ffffff
+                active_workspace   #333333 #5f676a #ffffff
+                inactive_workspace #333333 #222222 #888888
+                urgent_workspace   #2f343a #900000 #ffffff
+        }
+
 }
 
 # Some original keybings... thanks, but no thanks
