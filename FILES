@@ -1,0 +1,16 @@
+.config/fish/
+.config/i3/
+.screen/*
+.vimrc
+.git_commit_msg
+.gitconfig
+.gitignore_global
+.ackrc
+.conkyrc
+tools/todo.txt/
+tools/utils/
+tools/timetracker/
+tools/btsync/btsync_indicator.py
+tools/btsync/config.json
+tools/btsync/icons/
+.ssh/

@@ -1,6 +1,6 @@
 #! /bin/bash
 
-files='.config/fish/ .config/i3/ .screen/* .vimrc .git_commit_msg .gitconfig .gitignore_global .ackrc .conkyrc tools/todo.txt/ tools/utils/ .ssh/'
+files=$(cat FILES | xargs echo)
 
 function wrong_usage() {
     printf "wrong usage: you should use 'home' or 'repo' as parameter:\n"
@@ -15,7 +15,7 @@ function show_diff() {
         if [ $? -ne 0 ]; then
             echo ">>> Diff for file $file"
             diff $file ~/$file
-            echo 
+            echo
         fi
     done
 
@@ -54,8 +54,10 @@ case ${cmd} in
     'diff')
         show_diff
         ;;
+    'files')
+        echo "Files: $files"
+        ;;
     *)
         wrong_usage
         ;;
 esac
-
