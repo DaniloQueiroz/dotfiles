@@ -10,5 +10,4 @@
 .todo/done.txt
 .todo/report.txt
 .todo/todo.txt
-id_rsa*
-known_hosts
+.config/fish/conf.d/dh.fish

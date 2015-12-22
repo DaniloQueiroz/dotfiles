@@ -12,4 +12,3 @@ tools/timetracker/
 tools/btsync/btsync_indicator.py
 tools/btsync/config.json
 tools/btsync/icons/
-.ssh/
