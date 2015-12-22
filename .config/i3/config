@@ -1,7 +1,7 @@
 # General settings
 set $mod Mod4
 set $LOCKER dm-tool lock
-font pango:Ubuntu 10
+font pango:Ubuntu Bold 9 
 new_float pixel 1
 hide_edge_borders both
 #colors:                border  backgr. text    indicator
@@ -13,7 +13,7 @@ client.urgent #2f343a #900000 #ffffff #900000
 
 ### Workspaces
 assign [class="HipChat"] 3
-assign [class="HexChat"] 4
+assign [class="HexChat"] 5
 assign [class="Spotify"] 5
 
 ### Commands keybinds
@@ -41,7 +41,7 @@ exec --no-startup-id xset dpms 600
 # applets/indicators
 exec --no-startup-id nm-applet
 exec --no-startup-id /home/danilo/tools/btsync/btsync_indicator.py
-
+exec --no-startup-id /home/danilo/tools/timetracker/timer.py
 ### Keybinds
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id bash /home/danilo/tools/utils/volumectl up
@@ -97,6 +97,9 @@ bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
@@ -165,6 +168,7 @@ bar {
         tray_output primary
         tray_padding 2
         separator_symbol ⁝
+        font pango:Ubuntu Monospace 9
         colors {
                 background #001b28
                 separator  #ffffff
@@ -179,8 +183,6 @@ bar {
 }
 
 # Some original keybings... thanks, but no thanks
-# Use Mouse+$mod to drag floating windows to their wanted position
-#floating_modifier $mod
 # focus the child container
 #bindsym $mod+d focus child
 # reload the configuration file
