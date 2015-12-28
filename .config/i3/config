@@ -1,7 +1,7 @@
 # General settings
 set $mod Mod4
-set $LOCKER dm-tool lock
-font pango:Ubuntu Bold 9 
+set $LOCKER slimlock
+font pango:Hack Bold 9
 new_float pixel 1
 hide_edge_borders both
 #colors:                border  backgr. text    indicator
@@ -16,33 +16,49 @@ assign [class="HipChat"] 3
 assign [class="HexChat"] 5
 assign [class="Spotify"] 5
 
-### Commands keybinds
-bindsym $mod+l exec $LOCKER
-bindsym $mod+Shift+r restart
-bindsym $mod+F1 exec pcmanfm
-bindsym $mod+F2 exec firefox
-bindsym $mod+F3 exec /home/danilo/tools/eclipse-mars/eclipse
-bindsym $mod+F4 exec atom ~/Documents/notes
-# System tools
-bindsym $mod+F11 exec pavucontrol
-bindsym $mod+F12 exec lxrandr
-
-### Startup programs
-# Start compton compositor 
+################################
+### Startup/Session programs ###
+################################
+# Start compton compositor
 exec --no-startup-id compton -GC --backend glx --vsync opengl -b
 # wallpaper
 exec --no-startup-id feh --bg-scale .config/i3/drum_wallpaper1.jpg
+# polkit daemon
+exec --no-startup-id /usr/lib/mate-polkit/polkit-mate-authentication-agent-1
+# notify-osd
+exec --no-startup-id /usr/lib/notify-osd/notify-osd
+# gnome-keyring
+exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh
+# pasystray
+exec --no-startup-id pasystray
+
 # fix keyboard layout
 exec --no-startup-id /usr/bin/setxkbmap -model thinkpad60 -layout br
 # natural scrolling
 exec --no-startup-id xinput --set-prop "SynPS/2 Synaptics TouchPad" "Synaptics Scrolling Distance" -99 -99
-# turn screen off after 600 secons
-exec --no-startup-id xset dpms 600 
+# turn screen off after 300 seconds
+exec --no-startup-id xset dpms 600
+# Lock after 7 minutes
+exec --no-startup-id xautolock -time 5 -locker $LOCKER -detectsleep
+
 # applets/indicators
 exec --no-startup-id nm-applet
 exec --no-startup-id /home/danilo/tools/btsync/btsync_indicator.py
 exec --no-startup-id /home/danilo/tools/timetracker/timer.py
-### Keybinds
+
+################
+### Keybinds ###
+################
+# Commands keybinds
+bindsym $mod+l exec $LOCKER
+bindsym $mod+Shift+r restart
+bindsym $mod+F1 exec pcmanfm
+bindsym $mod+F2 exec firefox
+bindsym $mod+F3 exec eclipse
+bindsym $mod+F4 exec atom ~/Documents/notes
+# System tools
+bindsym $mod+F11 exec pavucontrol
+bindsym $mod+F12 exec lxrandr
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id bash /home/danilo/tools/utils/volumectl up
 bindsym XF86AudioLowerVolume exec --no-startup-id bash /home/danilo/tools/utils/volumectl down
@@ -153,9 +169,9 @@ set $mode_system System (l) lock, (e) logout, (s) suspend, (r) reboot, (Shift+s)
 mode "$mode_system" {
     bindsym l exec $LOCKER, mode "default"
     bindsym e exec --no-startup-id i3-msg exit, mode "default"
-    bindsym s exec --no-startup-id $Locker && systemctl suspend, mode "default"
+    bindsym s exec --no-startup-id systemctl suspend, mode "default"
     bindsym r exec --no-startup-id systemctl reboot, mode "default"
-    bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"  
+    bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"
 
     # back to normal Escape
     bindsym Escape mode "default"
@@ -165,10 +181,9 @@ bindsym $mod+Delete mode "$mode_system"
 ### StatusBar
 bar {
         status_command i3status -c ~/.config/i3/status
-        tray_output primary
         tray_padding 2
         separator_symbol ⁝
-        font pango:Ubuntu Monospace 9
+        font pango:Source Sans Pro-10 10
         colors {
                 background #001b28
                 separator  #ffffff
@@ -187,4 +202,3 @@ bar {
 #bindsym $mod+d focus child
 # reload the configuration file
 #bindsym $mod+Shift+c reload
-

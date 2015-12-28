@@ -15,7 +15,7 @@ order += "disk /home"
 #order += "path_exists VPN"
 order += "battery 1"
 order += "battery 0"
-order += "volume master"
+#order += "volume master"
 #order += "tztime berlin"
 order += "tztime local"
 
@@ -72,7 +72,7 @@ cpu_usage {
 
 cpu_temperature 0 {
     format = "☢%degrees °C"
-    path = "/sys/devices/platform/coretemp.0/hwmon/hwmon1/temp1_input"
+    path = "/sys/devices/platform/coretemp.0/hwmon/hwmon2/temp1_input"
 }
 
 disk "/" {
