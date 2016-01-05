@@ -1,9 +1,10 @@
 # General settings
 set $mod Mod4
-set $LOCKER slimlock
+set $LOCKER "/home/danilo/tools/utils/lock"
 font pango:Hack Bold 9
 new_float pixel 1
 hide_edge_borders both
+workspace_layout tabbed
 #colors:                border  backgr. text    indicator
 client.focused #0088CC #0088CC #ffffff #dddddd
 client.focused_inactive #333333 #333333 #888888 #292d2e
@@ -19,32 +20,28 @@ assign [class="Spotify"] 5
 ################################
 ### Startup/Session programs ###
 ################################
-# Start compton compositor
+# Compton Window Compositor
 exec --no-startup-id compton -GC --backend glx --vsync opengl -b
-# wallpaper
+# Wallpaper
 exec --no-startup-id feh --bg-scale .config/i3/drum_wallpaper1.jpg
-# polkit daemon
-exec --no-startup-id /usr/lib/mate-polkit/polkit-mate-authentication-agent-1
-# notify-osd
-exec --no-startup-id /usr/lib/notify-osd/notify-osd
-# gnome-keyring
-exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh
-# pasystray
-exec --no-startup-id pasystray
-
-# fix keyboard layout
-exec --no-startup-id /usr/bin/setxkbmap -model thinkpad60 -layout br
-# natural scrolling
-exec --no-startup-id xinput --set-prop "SynPS/2 Synaptics TouchPad" "Synaptics Scrolling Distance" -99 -99
-# turn screen off after 300 seconds
-exec --no-startup-id xset dpms 600
 # Lock after 7 minutes
 exec --no-startup-id xautolock -time 5 -locker $LOCKER -detectsleep
+# Polkit Agent
+exec --no-startup-id /usr/lib/mate-polkit/polkit-mate-authentication-agent-1
 
-# applets/indicators
+# Indicators
+exec --no-startup-id pasystray
 exec --no-startup-id nm-applet
+exec --no-startup-id kalu
 exec --no-startup-id /home/danilo/tools/btsync/btsync_indicator.py
 exec --no-startup-id /home/danilo/tools/timetracker/timer.py
+
+# Input/Output tunning
+# fix keyboard layout
+exec --no-startup-id /usr/bin/setxkbmap -model thinkpad60 -layout br
+# Synaptics Touchpad (vertical and horizontal natural scrolling)
+exec --no-startup-id xinput --set-prop "SynPS/2 Synaptics TouchPad" "Synaptics Two-Finger Scrolling" 1 1
+exec --no-startup-id xinput --set-prop "SynPS/2 Synaptics TouchPad" "Synaptics Scrolling Distance" -99 -99
 
 ################
 ### Keybinds ###
@@ -68,17 +65,14 @@ bindsym XF86AudioMicMute exec --no-startup-id bash /home/danilo/tools/utils/volu
 bindsym XF86AudioPlay exec --no-startup-id bash /home/danilo/tools/utils/spotifyctl play
 bindsym XF86AudioNext exec --no-startup-id bash /home/danilo/tools/utils/spotifyctl next
 bindsym XF86AudioPrev exec --no-startup-id bash /home/danilo/tools/utils/spotifyctl prev
-
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 10
 bindsym XF86MonBrightnessDown exec xbacklight -dec 10
 
-# toggle bar mode
-bindsym $mod+n bar mode toggle
-
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
-
+# toggle bar mode
+bindsym $mod+n bar mode toggle
 # kill focused window
 bindsym $mod+Shift+q kill
 
@@ -167,9 +161,10 @@ bindsym $mod+r mode "resize"
 ### System Mode
 set $mode_system System (l) lock, (e) logout, (s) suspend, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
-    bindsym l exec $LOCKER, mode "default"
+    bindsym l exec --no-startup-id $LOCKER, mode "default"
     bindsym e exec --no-startup-id i3-msg exit, mode "default"
-    bindsym s exec --no-startup-id systemctl suspend, mode "default"
+    # Using $LOCKER don't work :(
+    bindsym s exec --no-startup-id systemctl suspend, mode "default" 
     bindsym r exec --no-startup-id systemctl reboot, mode "default"
     bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"
 
@@ -183,7 +178,7 @@ bar {
         status_command i3status -c ~/.config/i3/status
         tray_padding 2
         separator_symbol ⁝
-        font pango:Source Sans Pro-10 10
+        font pango:Droid Sans Mono 10
         colors {
                 background #001b28
                 separator  #ffffff
