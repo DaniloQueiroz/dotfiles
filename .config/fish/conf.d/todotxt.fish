@@ -1,5 +1,5 @@
 #!/usr/bin/fish
-alias todo "~/tools/todo.txt/todo.sh"
+alias todo "/usr/bin/todo.sh"
 
 complete -c todo -s @ --description "Hide context names in list output"
 complete -c todo -s + --description "Hide project names in list output"
