@@ -1,0 +1,12 @@
+#!/bin/bash
+
+sudo /usr/bin/tpacpi-bat -s ST 1 0
+sudo /usr/bin/tpacpi-bat -s ST 2 0
+sudo /usr/bin/tpacpi-bat -s SP 1 0
+sudo /usr/bin/tpacpi-bat -s SP 2 0
+
+sudo /usr/bin/tpacpi-bat -g ST 1 
+sudo /usr/bin/tpacpi-bat -g ST 2
+sudo /usr/bin/tpacpi-bat -g SP 1
+sudo /usr/bin/tpacpi-bat -g SP 2
+
