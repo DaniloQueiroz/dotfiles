@@ -1,0 +1,5 @@
+[Desktop Entry]
+Name=feh
+Exec=/usr/bin/feh --bg-scale .config/i3/drum_wallpaper1.jpg
+Type=Application
+Comment=image viewer and cataloguer

@@ -1,42 +1,25 @@
 # General settings
 set $mod Mod4
-set $LOCKER "/home/danilo/tools/utils/lock"
 font pango:Hack Bold 9
 new_float pixel 1
 hide_edge_borders both
 workspace_layout tabbed
-#colors:                border  backgr. text    indicator
+for_window [window_role="pop-up"] floating enable
+#colors:       border  backgr. text    indicator
 client.focused #0088CC #0088CC #ffffff #dddddd
 client.focused_inactive #333333 #333333 #888888 #292d2e
 client.unfocused #333333 #333333 #888888 #292d2e
 client.urgent #2f343a #900000 #ffffff #900000
 
-
-### Workspaces
-assign [class="HipChat"] 3
-assign [class="HexChat"] 5
-assign [class="Spotify"] 5
-
 ################################
 ### Startup/Session programs ###
 ################################
-# Compton Window Compositor
-exec --no-startup-id compton -GC --backend glx --vsync opengl -b
-# Wallpaper
-exec --no-startup-id feh --bg-scale .config/i3/drum_wallpaper1.jpg
-# Lock after 7 minutes
-exec --no-startup-id xautolock -time 5 -locker $LOCKER -detectsleep
-# Polkit Agent
-exec --no-startup-id /usr/lib/mate-polkit/polkit-mate-authentication-agent-1
+# Execute desktop files from ~/.config/autostart
+exec --no-startup-id ~/tools/utils/dex -a -s ~/.config/autostart/
 
 # Indicators
-exec --no-startup-id pasystray
-exec --no-startup-id nm-applet
-exec --no-startup-id kalu
 exec --no-startup-id /home/danilo/tools/btsync/btsync_indicator.py
 exec --no-startup-id /home/danilo/tools/timetracker/timer.py
-
-# Input/Output tunning
 # fix keyboard layout
 exec --no-startup-id /usr/bin/setxkbmap -model thinkpad60 -layout br
 # Synaptics Touchpad (vertical and horizontal natural scrolling)
@@ -47,13 +30,12 @@ exec --no-startup-id xinput --set-prop "SynPS/2 Synaptics TouchPad" "Synaptics S
 ### Keybinds ###
 ################
 # Commands keybinds
-bindsym $mod+l exec $LOCKER
-bindsym $mod+Shift+r restart
 bindsym $mod+F1 exec pcmanfm
 bindsym $mod+F2 exec firefox
 bindsym $mod+F3 exec eclipse
 bindsym $mod+F4 exec atom ~/Documents/notes
 # System tools
+bindsym $mod+F9 exec /usr/bin/setxkbmap -model thinkpad60 -layout br
 bindsym $mod+F11 exec pavucontrol
 bindsym $mod+F12 exec lxrandr
 # Pulse Audio controls
@@ -75,10 +57,9 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+n bar mode toggle
 # kill focused window
 bindsym $mod+Shift+q kill
-
-# start dmenu (a program launcher)
-#bindsym $mod+d exec dmenu_run
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+bindsym $mod+d exec --no-startup-id "rofi -bg '#333333' -fg '#888888' -hlbg '#0088CC' -hlfg '#ffffff' -terminal 'lxterminal' -lines 7 -padding 10 -font 'Inconsolata 14' -modi 'run,window,ssh' -show run "
+bindsym $mod+l exec "light-locker-command -l"
+bindsym $mod+Shift+r restart
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -155,16 +136,13 @@ mode "resize" {
         # back to normal: Enter or Escape
         bindsym Escape mode "default"
 }
-
 bindsym $mod+r mode "resize"
 
 ### System Mode
-set $mode_system System (l) lock, (e) logout, (s) suspend, (r) reboot, (Shift+s) shutdown
+set $mode_system System (l) logout, (s) suspend, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
-    bindsym l exec --no-startup-id $LOCKER, mode "default"
-    bindsym e exec --no-startup-id i3-msg exit, mode "default"
-    # Using $LOCKER don't work :(
-    bindsym s exec --no-startup-id systemctl suspend, mode "default" 
+    bindsym l exec --no-startup-id i3-msg exit, mode "default"
+    bindsym s exec --no-startup-id systemctl suspend, mode "default"
     bindsym r exec --no-startup-id systemctl reboot, mode "default"
     bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"
 
@@ -175,25 +153,21 @@ bindsym $mod+Delete mode "$mode_system"
 
 ### StatusBar
 bar {
-        status_command i3status -c ~/.config/i3/status
-        tray_padding 2
-        separator_symbol ⁝
-        font pango:Droid Sans Mono 10
-        colors {
-                background #001b28
-                separator  #ffffff
-                statusline #329fd6
+#  status_command i3status -c ~/.config/i3/status
+    status_command /usr/bin/python3 ~/.config/i3/status.py
+    workspace_buttons yes
+    tray_padding 2
+    separator_symbol ⁝
+    font pango:Droid Sans Mono 10, Awesome 10
+    colors {
+            background #001b28
+            separator  #ffffff
+            statusline #329fd6
 
-                focused_workspace  #44bbff #3276E8 #ffffff
-                active_workspace   #333333 #5f676a #ffffff
-                inactive_workspace #333333 #222222 #888888
-                urgent_workspace   #2f343a #900000 #ffffff
-        }
+            focused_workspace  #44bbff #3276E8 #ffffff
+            active_workspace   #333333 #5f676a #ffffff
+            inactive_workspace #333333 #222222 #888888
+            urgent_workspace   #2f343a #900000 #ffffff
+    }
 
 }
-
-# Some original keybings... thanks, but no thanks
-# focus the child container
-#bindsym $mod+d focus child
-# reload the configuration file
-#bindsym $mod+Shift+c reload

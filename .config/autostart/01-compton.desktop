@@ -1,0 +1,5 @@
+[Desktop Entry]
+Comment=a compositor for X11
+Exec=/usr/bin/compton -GC --backend glx --vsync opengl -b
+Name=compton
+Type=Application
