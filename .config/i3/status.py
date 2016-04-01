@@ -5,7 +5,7 @@ status = Status(standalone=True)
 
 status.register(
     "clock",
-    format="%a %d %b %H:%M",)
+    format="%b %-d %k:%M")
 
 status.register(
     "battery",
@@ -46,12 +46,12 @@ status.register(
 status.register(
     "disk",
     path="/home",
-    format=" {used}%")
+    format=" {percentage_used}%")
 
 status.register(
     "disk",
     path="/",
-    format=" {used}%")
+    format=" {percentage_used}%")
 
 status.register(
     "mem",

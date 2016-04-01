@@ -1,5 +1,5 @@
 [Desktop Entry]
 Name=feh
-Exec=/usr/bin/feh --bg-scale .config/i3/drum_wallpaper1.jpg
+Exec=/bin/bash /home/danilo/tools/utils/wallpaper.sh
 Type=Application
 Comment=image viewer and cataloguer
