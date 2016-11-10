@@ -4,7 +4,11 @@ font pango:Hack Bold 9
 new_float pixel 1
 hide_edge_borders both
 workspace_layout tabbed
+
 for_window [window_role="pop-up"] floating enable
+for_window [class="Galculator" instance="galculator"] floating enable
+for_window [class="Gnote" instance="gnote"] floating enable
+
 #colors:       border  backgr. text    indicator
 #client.focused #0088CC #0088CC #ffffff #dddddd
 #client.focused_inactive #333333 #333333 #888888 #292d2e
@@ -15,15 +19,12 @@ client.focused            #373d48  #373d48    #FFFFFF   #373d48
 client.focused_inactive   #29303a   #29303a   #FFFFFF   #000000
 client.unfocused          #29303a   #29303a   #FFFFFF   #000000
 
+
 ################################
 ### Startup/Session programs ###
 ################################
 # Execute desktop files from ~/.config/autostart
 exec --no-startup-id ~/tools/utils/dex -a -s ~/.config/autostart/
-
-# Indicators
-exec --no-startup-id /home/danilo/tools/btsync/btsync_indicator.py
-exec --no-startup-id /home/danilo/tools/timetracker/timer.py
 # fix keyboard layout
 exec --no-startup-id /usr/bin/setxkbmap -model thinkpad60 -layout br
 # Synaptics Touchpad (vertical and horizontal natural scrolling)
@@ -36,10 +37,13 @@ exec --no-startup-id xinput --set-prop "SynPS/2 Synaptics TouchPad" "Synaptics S
 # Commands keybinds
 bindsym $mod+F1 exec pcmanfm
 bindsym $mod+F2 exec firefox
-bindsym $mod+F3 exec eclipse
-bindsym $mod+F4 exec atom ~/Documents/notes
+bindsym $mod+F4 exec gnote
 # System tools
-bindsym $mod+F9 exec /usr/bin/setxkbmap -model thinkpad60 -layout br
+bindsym $mod+F5 exec /usr/bin/setxkbmap -model thinkpad60 -layout br
+bindsym $mod+F6 exec bash /home/danilo/tools/utils/screensaver
+bindsym $mod+F7 exec alsactl restore
+bindsym $mod+F8 exec bash /home/monitor-config.sh .
+# Some more tools ui
 bindsym $mod+F11 exec pavucontrol
 bindsym $mod+F12 exec lxrandr
 # Pulse Audio controls
@@ -61,8 +65,10 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+n bar mode toggle
 # kill focused window
 bindsym $mod+Shift+q kill
-bindsym $mod+d exec --no-startup-id "rofi -modi 'run,window,ssh' -show run -font 'Inconsolata 18' -fake-transparency -color-enabled -separator-style none -lines 5 -width 100 -padding 300 -color-window 'argb:bf000000, argb:0000000, argb:0000000' -color-normal 'argb:0000000, #f7fdff, argb:a000000, argb:21fefefe, #ffffff' -color-active 'argb:4efffefe, #ffffff, argb:f000000, argb:51268bd2, #ffffff' -color-urgent 'argb:36ff0035, #ffffff, argb:f000000, argb:4bdc322f, #ffffff'"
-bindsym $mod+s exec --no-startup-id "rofi -modi 'run,window,ssh' -show window -font 'Inconsolata 18' -fake-transparency -color-enabled -separator-style none -lines 5 -width 100 -padding 300 -color-window 'argb:bf000000, argb:0000000, argb:0000000' -color-normal 'argb:0000000, #f7fdff, argb:a000000, argb:21fefefe, #ffffff' -color-active 'argb:4efffefe, #ffffff, argb:f000000, argb:51268bd2, #ffffff' -color-urgent 'argb:36ff0035, #ffffff, argb:f000000, argb:4bdc322f, #ffffff'"
+# Rofi launcher
+bindsym $mod+d exec --no-startup-id "rofi -modi 'run,file:/home/danilo/.config/i3/rofi-file-browser.sh,window,ssh' -show run -font 'Saraia 18' -fake-transparency -color-enabled -separator-style none -lines 5 -width 100 -padding 300 -color-window 'argb:bf000000, argb:0000000, argb:0000000' -color-normal 'argb:0000000, #f7fdff, argb:a000000, argb:21fefefe, #ffffff' -color-active 'argb:4efffefe, #ffffff, argb:f000000, argb:51268bd2, #ffffff' -color-urgent 'argb:36ff0035, #ffffff, argb:f000000, argb:4bdc322f, #ffffff'"
+bindsym $mod+s exec --no-startup-id "rofi -modi 'run,file:/home/danilo/.config/i3/rofi-file-browser.sh,window,ssh' -show file -font 'Saraia 18' -fake-transparency -color-enabled -separator-style none -lines 5 -width 100 -padding 300 -color-window 'argb:bf000000, argb:0000000, argb:0000000' -color-normal 'argb:0000000, #f7fdff, argb:a000000, argb:21fefefe, #ffffff' -color-active 'argb:4efffefe, #ffffff, argb:f000000, argb:51268bd2, #ffffff' -color-urgent 'argb:36ff0035, #ffffff, argb:f000000, argb:4bdc322f, #ffffff'"
+bindsym $mod+Tab exec --no-startup-id "rofi -modi 'window' -show window -font 'Saraia 18' -fake-transparency -color-enabled -separator-style none -lines 5 -width 100 -padding 300 -color-window 'argb:bf000000, argb:0000000, argb:0000000' -color-normal 'argb:0000000, #f7fdff, argb:a000000, argb:21fefefe, #ffffff' -color-active 'argb:4efffefe, #ffffff, argb:f000000, argb:51268bd2, #ffffff' -color-urgent 'argb:36ff0035, #ffffff, argb:f000000, argb:4bdc322f, #ffffff'"
 
 bindsym $mod+l exec "light-locker-command -l"
 bindsym $mod+Shift+r restart
@@ -163,21 +169,16 @@ bar {
     workspace_buttons yes
     tray_padding 2
     separator_symbol ⁝
-    font pango:Droid Sans Mono 10, Awesome 10
+    font pango:Roboto Condensed 10, Awesome 10
     colors {
             background #001b28
             separator  #ffffff
-            statusline #329fd6
+            statusline #FFFFFF
 
             
             background #29303a
             focused_workspace #29303a #29303a #FFFFFF
             inactive_workspace #373d48 #373d48 #AAAAAA
-            
-#            focused_workspace  #44bbff #3276E8 #ffffff
-#            active_workspace   #333333 #5f676a #ffffff
-#            inactive_workspace #333333 #222222 #888888
-#            urgent_workspace   #2f343a #900000 #ffffff
     }
 
 }

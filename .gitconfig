@@ -1,6 +1,6 @@
 [user]
   name = Danilo Penna Queiroz
-  email = dpenna.queiroz@gmail.com
+	email = dpenna.queiroz@gmail.com
 [alias]
   st = status -bs
   co = checkout

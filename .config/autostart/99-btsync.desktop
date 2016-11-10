@@ -1,0 +1,4 @@
+[Desktop Entry]
+Type=Application
+Exec=/home/danilo/tools/btsync/btsync --config /home/danilo/tools/btsync/config.json --log /tmp/btsync.log
+Name=BTSync

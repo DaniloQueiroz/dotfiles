@@ -2,6 +2,6 @@
 Type=Application
 Name=Screen Locker
 Icon=preferences-desktop-screensaver
-Exec=echo /usr/bin/light-locker
+Exec=/bin/bash /home/danilo/tools/utils/screensaver
 NoDisplay=true
 NotShownIn=Gnome;Unity

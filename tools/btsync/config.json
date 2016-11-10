@@ -7,7 +7,7 @@
   "upload_limit" : 0,
   "folder_rescan_interval" : 86400,
   "webui" : {
-    "listen" : "0.0.0.0:8888",
+    "listen" : "0.0.0.0:8890",
     "login" : "admin",
     "password" : "sou1file",
     "allow_empty_password" : false,
