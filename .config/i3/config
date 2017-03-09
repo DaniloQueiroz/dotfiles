@@ -5,24 +5,17 @@ new_float pixel 1
 hide_edge_borders both
 workspace_layout tabbed
 
+# Floating windows
 for_window [window_role="pop-up"] floating enable
 for_window [class="Galculator" instance="galculator"] floating enable
 for_window [class="Gnote" instance="gnote"] floating enable
 
 #colors:       border  backgr. text    indicator
-#client.focused #0088CC #0088CC #ffffff #dddddd
-#client.focused_inactive #333333 #333333 #888888 #292d2e
-#client.unfocused #333333 #333333 #888888 #292d2e
-#client.urgent #2f343a #900000 #ffffff #900000
-
 client.focused            #373d48  #373d48    #FFFFFF   #373d48
 client.focused_inactive   #29303a   #29303a   #FFFFFF   #000000
 client.unfocused          #29303a   #29303a   #FFFFFF   #000000
 
-
-################################
-### Startup/Session programs ###
-################################
+## Startup/Session programs
 # Execute desktop files from ~/.config/autostart
 exec --no-startup-id ~/tools/utils/dex -a -s ~/.config/autostart/
 # fix keyboard layout
@@ -31,17 +24,14 @@ exec --no-startup-id /usr/bin/setxkbmap -model thinkpad60 -layout br
 exec --no-startup-id xinput --set-prop "SynPS/2 Synaptics TouchPad" "Synaptics Two-Finger Scrolling" 1 1
 exec --no-startup-id xinput --set-prop "SynPS/2 Synaptics TouchPad" "Synaptics Scrolling Distance" -99 -99
 
-################
-### Keybinds ###
-################
-# Commands keybinds
+## Keybinds
+# Apps keybinds
 bindsym $mod+F1 exec pcmanfm
-bindsym $mod+F2 exec firefox
+bindsym $mod+F2 exec firefox -P personal
 bindsym $mod+F4 exec gnote
 # System tools
 bindsym $mod+F5 exec /usr/bin/setxkbmap -model thinkpad60 -layout br
 bindsym $mod+F6 exec bash /home/danilo/tools/utils/screensaver
-bindsym $mod+F7 exec alsactl restore
 bindsym $mod+F8 exec bash /home/monitor-config.sh .
 # Some more tools ui
 bindsym $mod+F11 exec pavucontrol
@@ -65,13 +55,18 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+n bar mode toggle
 # kill focused window
 bindsym $mod+Shift+q kill
-# Rofi launcher
-bindsym $mod+d exec --no-startup-id "rofi -modi 'run,file:/home/danilo/.config/i3/rofi-file-browser.sh,window,ssh' -show run -font 'Saraia 18' -fake-transparency -color-enabled -separator-style none -lines 5 -width 100 -padding 300 -color-window 'argb:bf000000, argb:0000000, argb:0000000' -color-normal 'argb:0000000, #f7fdff, argb:a000000, argb:21fefefe, #ffffff' -color-active 'argb:4efffefe, #ffffff, argb:f000000, argb:51268bd2, #ffffff' -color-urgent 'argb:36ff0035, #ffffff, argb:f000000, argb:4bdc322f, #ffffff'"
-bindsym $mod+s exec --no-startup-id "rofi -modi 'run,file:/home/danilo/.config/i3/rofi-file-browser.sh,window,ssh' -show file -font 'Saraia 18' -fake-transparency -color-enabled -separator-style none -lines 5 -width 100 -padding 300 -color-window 'argb:bf000000, argb:0000000, argb:0000000' -color-normal 'argb:0000000, #f7fdff, argb:a000000, argb:21fefefe, #ffffff' -color-active 'argb:4efffefe, #ffffff, argb:f000000, argb:51268bd2, #ffffff' -color-urgent 'argb:36ff0035, #ffffff, argb:f000000, argb:4bdc322f, #ffffff'"
-bindsym $mod+Tab exec --no-startup-id "rofi -modi 'window' -show window -font 'Saraia 18' -fake-transparency -color-enabled -separator-style none -lines 5 -width 100 -padding 300 -color-window 'argb:bf000000, argb:0000000, argb:0000000' -color-normal 'argb:0000000, #f7fdff, argb:a000000, argb:21fefefe, #ffffff' -color-active 'argb:4efffefe, #ffffff, argb:f000000, argb:51268bd2, #ffffff' -color-urgent 'argb:36ff0035, #ffffff, argb:f000000, argb:4bdc322f, #ffffff'"
-
+# lock screen
 bindsym $mod+l exec "light-locker-command -l"
+# restart i3
 bindsym $mod+Shift+r restart
+
+## Rofi launcher
+# launcher
+bindsym $mod+d exec --no-startup-id "rofi -modi 'run,ssh' -show run -font 'Saraia 18' -fake-transparency -color-enabled -separator-style none -lines 5 -width 100 -padding 300 -color-window 'argb:bf000000, argb:0000000, argb:0000000' -color-normal 'argb:0000000, #f7fdff, argb:a000000, argb:21fefefe, #ffffff' -color-active 'argb:4efffefe, #ffffff, argb:f000000, argb:51268bd2, #ffffff' -color-urgent 'argb:36ff0035, #ffffff, argb:f000000, argb:4bdc322f, #ffffff'"
+# file mode
+bindsym $mod+s exec --no-startup-id "rofi -modi 'file:/home/danilo/.config/i3/rofi-file-browser.sh' -show file -font 'Saraia 18' -fake-transparency -color-enabled -separator-style none -lines 5 -width 100 -padding 300 -color-window 'argb:bf000000, argb:0000000, argb:0000000' -color-normal 'argb:0000000, #f7fdff, argb:a000000, argb:21fefefe, #ffffff' -color-active 'argb:4efffefe, #ffffff, argb:f000000, argb:51268bd2, #ffffff' -color-urgent 'argb:36ff0035, #ffffff, argb:f000000, argb:4bdc322f, #ffffff'"
+# window mode
+bindsym $mod+Tab exec --no-startup-id "rofi -modi 'window' -show window -font 'Saraia 18' -fake-transparency -color-enabled -separator-style none -lines 5 -width 100 -padding 300 -color-window 'argb:bf000000, argb:0000000, argb:0000000' -color-normal 'argb:0000000, #f7fdff, argb:a000000, argb:21fefefe, #ffffff' -color-active 'argb:4efffefe, #ffffff, argb:f000000, argb:51268bd2, #ffffff' -color-urgent 'argb:36ff0035, #ffffff, argb:f000000, argb:4bdc322f, #ffffff'"
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -87,13 +82,10 @@ bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
 bindsym $mod+h split h
-
 # split in vertical orientation
 bindsym $mod+v split v
-
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
-
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
@@ -138,7 +130,7 @@ bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
-### Resize Mode
+## Resize Mode
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
         bindsym Left resize shrink width 10 px or 10 ppt
@@ -150,7 +142,7 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-### System Mode
+## System Mode
 set $mode_system System (l) logout, (s) suspend, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
     bindsym l exec --no-startup-id i3-msg exit, mode "default"
@@ -163,7 +155,7 @@ mode "$mode_system" {
 }
 bindsym $mod+Delete mode "$mode_system"
 
-### StatusBar
+## StatusBar
 bar {
     status_command /usr/bin/python3 ~/.config/i3/status.py
     workspace_buttons yes
@@ -175,10 +167,8 @@ bar {
             separator  #ffffff
             statusline #FFFFFF
 
-            
             background #29303a
             focused_workspace #29303a #29303a #FFFFFF
             inactive_workspace #373d48 #373d48 #AAAAAA
     }
-
 }

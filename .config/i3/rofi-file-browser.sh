@@ -2,8 +2,8 @@
 
 # Various options for the file browser script:
 ROFI_FB_GENERIC_FO="xdg-open" # command used for opening the selection
-ROFI_FB_PREV_LOC_FILE=~/.local/share/rofi/rofi_fb_prevloc
-ROFI_FB_HISTORY_FILE=~/.local/share/rofi/rofi_fb_history 
+ROFI_FB_PREV_LOC_FILE=~/.cache/rofi_fb_prevloc
+ROFI_FB_HISTORY_FILE=~/.cache/rofi_fb_history 
 ROFI_FB_HISTORY_MAXCOUNT=5 # maximum number of history entries
 # Comment the next variable to always start in the last visited directory,
 # otherwise rofi_fb will start in the specified directory:
