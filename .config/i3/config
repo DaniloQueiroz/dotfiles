@@ -1,9 +1,21 @@
-# General settings
+
 set $mod Mod4
 font pango:Hack Bold 9
 new_float pixel 1
 hide_edge_borders both
 workspace_layout tabbed
+
+# use workspaces on different monitors
+workspace "1" output eDP1
+workspace "2" output eDP1
+workspace "3" output eDP1
+workspace "4" output HDMI1
+workspace "5" output HDMI1
+workspace "6" output HDMI1
+workspace "7" output HDMI1
+workspace "8" output HDMI1
+workspace "9" output HDMI1
+workspace "10" output HDMI1
 
 # Floating windows
 for_window [window_role="pop-up"] floating enable
@@ -17,7 +29,7 @@ client.unfocused          #29303a   #29303a   #FFFFFF   #000000
 
 ## Startup/Session programs
 # Execute desktop files from ~/.config/autostart
-exec --no-startup-id ~/tools/utils/dex -a -s ~/.config/autostart/
+exec --no-startup-id dex -a ~/.config/autostart/
 # fix keyboard layout
 exec --no-startup-id /usr/bin/setxkbmap -model thinkpad60 -layout br
 # Synaptics Touchpad (vertical and horizontal natural scrolling)
@@ -28,6 +40,7 @@ exec --no-startup-id xinput --set-prop "SynPS/2 Synaptics TouchPad" "Synaptics S
 # Apps keybinds
 bindsym $mod+F1 exec pcmanfm
 bindsym $mod+F2 exec firefox -P personal
+bindsym $mod+F3 exec /home/danilo/tools/utils/clean-clipboard
 bindsym $mod+F4 exec gnote
 # System tools
 bindsym $mod+F5 exec /usr/bin/setxkbmap -model thinkpad60 -layout br
@@ -51,8 +64,6 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 10
 
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
-# toggle bar mode
-bindsym $mod+n bar mode toggle
 # kill focused window
 bindsym $mod+Shift+q kill
 # lock screen
@@ -61,12 +72,14 @@ bindsym $mod+l exec "light-locker-command -l"
 bindsym $mod+Shift+r restart
 
 ## Rofi launcher
-# launcher
-bindsym $mod+d exec --no-startup-id "rofi -modi 'run,ssh' -show run -font 'Saraia 18' -fake-transparency -color-enabled -separator-style none -lines 5 -width 100 -padding 300 -color-window 'argb:bf000000, argb:0000000, argb:0000000' -color-normal 'argb:0000000, #f7fdff, argb:a000000, argb:21fefefe, #ffffff' -color-active 'argb:4efffefe, #ffffff, argb:f000000, argb:51268bd2, #ffffff' -color-urgent 'argb:36ff0035, #ffffff, argb:f000000, argb:4bdc322f, #ffffff'"
+# launcher mode
+bindsym $mod+d exec --no-startup-id "rofi -config ~/.config/i3/rofi-conf -modi 'run,ssh' -show run"
+
 # file mode
-bindsym $mod+s exec --no-startup-id "rofi -modi 'file:/home/danilo/.config/i3/rofi-file-browser.sh' -show file -font 'Saraia 18' -fake-transparency -color-enabled -separator-style none -lines 5 -width 100 -padding 300 -color-window 'argb:bf000000, argb:0000000, argb:0000000' -color-normal 'argb:0000000, #f7fdff, argb:a000000, argb:21fefefe, #ffffff' -color-active 'argb:4efffefe, #ffffff, argb:f000000, argb:51268bd2, #ffffff' -color-urgent 'argb:36ff0035, #ffffff, argb:f000000, argb:4bdc322f, #ffffff'"
+bindsym $mod+s exec --no-startup-id "rofi  -config ~/.config/i3/rofi-conf -modi 'file:/home/danilo/.config/i3/rofi-file-browser.sh' -show file"
+
 # window mode
-bindsym $mod+Tab exec --no-startup-id "rofi -modi 'window' -show window -font 'Saraia 18' -fake-transparency -color-enabled -separator-style none -lines 5 -width 100 -padding 300 -color-window 'argb:bf000000, argb:0000000, argb:0000000' -color-normal 'argb:0000000, #f7fdff, argb:a000000, argb:21fefefe, #ffffff' -color-active 'argb:4efffefe, #ffffff, argb:f000000, argb:51268bd2, #ffffff' -color-urgent 'argb:36ff0035, #ffffff, argb:f000000, argb:4bdc322f, #ffffff'"
+bindsym $mod+Tab exec --no-startup-id "rofi -config ~/.config/i3/rofi-conf -modi 'window' -show window"
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -158,10 +171,11 @@ bindsym $mod+Delete mode "$mode_system"
 ## StatusBar
 bar {
     status_command /usr/bin/python3 ~/.config/i3/status.py
+    position bottom
     workspace_buttons yes
     tray_padding 2
     separator_symbol ⁝
-    font pango:Roboto Condensed 10, Awesome 10
+    font pango:Roboto Condensed 9, Awesome 9
     colors {
             background #001b28
             separator  #ffffff

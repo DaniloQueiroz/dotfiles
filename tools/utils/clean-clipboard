@@ -1,0 +1,5 @@
+#!/bin/bash
+xsel -bc
+xsel -pc
+xsel -sc
+notify-send -t 1000 -u normal Clipboard "Clipboard erased"
