@@ -7,9 +7,4 @@
 .gitconfig
 .gitignore_global
 .ackrc
-tools/todo.txt/
 tools/utils/
-tools/timetracker/
-tools/btsync/btsync_indicator.py
-tools/btsync/config.json
-tools/btsync/icons/
