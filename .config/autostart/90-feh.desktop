@@ -1,5 +1,0 @@
-[Desktop Entry]
-Name=feh
-Exec=/bin/bash /home/danilo/tools/utils/wallpaper.sh
-Type=Application
-Comment=image viewer and cataloguer

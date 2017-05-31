@@ -1,7 +1,7 @@
 set $i3dm /home/danilo/tools/i3dm/i3dm
 set $mod Mod4
 
-font pango:Hack Bold 9
+font pango:Roboto Bold 9
 new_float pixel 1
 hide_edge_borders both
 workspace_layout tabbed
@@ -47,8 +47,8 @@ bindsym $mod+F6 exec $i3dm screensaver -t
 bindsym $mod+F7 exec $i3dm clipboard
 bindsym $mod+F8 exec $i3dm screenctl --no-wait
 # Some more tools ui
-bindsym $mod+F11 exec pavucontrol
-bindsym $mod+F12 exec lxrandr # $i3dm screenctl --ui 
+bindsym $mod+F11 exec $i3dm volumectl --ui
+bindsym $mod+F12 exec $i3dm screenctl --ui 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id $i3dm volumectl up
 bindsym XF86AudioLowerVolume exec --no-startup-id $i3dm volumectl down

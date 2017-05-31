@@ -1,5 +1,0 @@
-[Desktop Entry]
-Comment=a compositor for X11
-Exec=/usr/bin/compton --config /home/danilo/.config/compton/config -b
-Name=compton
-Type=Application

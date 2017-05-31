@@ -1,4 +1,0 @@
-[Desktop Entry]
-Type=Application
-Exec=/home/danilo/tools/utils/launch_ssh_agent.sh
-Name=SSH Agent
