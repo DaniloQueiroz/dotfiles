@@ -37,6 +37,7 @@ exec --no-startup-id xinput --set-prop "SynPS/2 Synaptics TouchPad" "Synaptics T
 exec --no-startup-id xinput --set-prop "SynPS/2 Synaptics TouchPad" "Synaptics Scrolling Distance" -99 -99
 
 ## Keybinds
+bindsym $mod+P exec passmenu
 # Apps keybinds
 bindsym $mod+F1 exec pcmanfm
 bindsym $mod+F2 exec firefox -P personal
