@@ -7,7 +7,7 @@ set -g fish_color_user -o green
 set -g fish_color_host -o cyan
 
 for conf in ~/.config/fish/conf.d/*.fish
-    . $conf 
+    source $conf 
 end
 
 set -e fish_greeting

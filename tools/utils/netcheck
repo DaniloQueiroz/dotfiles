@@ -1,0 +1,23 @@
+#!/bin/bash
+function notify() {
+  notify-send -t 500 -u normal "Network Check" "$*"
+}
+
+function check_ping() {
+  echo "checking ping"
+  ping -c 1 8.8.8.8 > /dev/null
+  if [ $? -ne 0 ]; then
+    notify "Ping failed, restarting network manager"
+    systemctl restart NetworkManager
+    if [ $? -eq 0 ]; then
+        sleep 20s
+        check_connman
+     else
+        notify "Failed"
+   fi
+  else
+   notify "Connectivity test OK"
+  fi
+}
+
+check_ping

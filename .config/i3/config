@@ -1,7 +1,7 @@
 set $i3dm /home/danilo/tools/i3dm/i3dm
 set $mod Mod4
 
-font pango:Roboto Bold 9
+font pango:Hack 9
 new_float pixel 1
 hide_edge_borders both
 workspace_layout tabbed
@@ -21,7 +21,7 @@ workspace "10" output HDMI1
 # Floating windows
 for_window [window_role="pop-up"] floating enable
 for_window [class="Galculator" instance="galculator"] floating enable
-for_window [class="Gnote" instance="gnote"] floating enable
+#for_window [class="Gnote" instance="gnote"] floating enable
 
 #colors:       border  backgr. text    indicator
 client.focused            #373d48  #373d48    #FFFFFF   #373d48
@@ -37,16 +37,18 @@ exec --no-startup-id xinput --set-prop "SynPS/2 Synaptics TouchPad" "Synaptics T
 exec --no-startup-id xinput --set-prop "SynPS/2 Synaptics TouchPad" "Synaptics Scrolling Distance" -99 -99
 
 ## Keybinds
-bindsym $mod+P exec passmenu
+bindsym $mod+P exec passmenu -b -i -p "pass > "
 # Apps keybinds
 bindsym $mod+F1 exec pcmanfm
 bindsym $mod+F2 exec firefox -P personal
-bindsym $mod+F4 exec gnote
+bindsym $mod+F3 exec gnote
+bindsym $mod+F4 exec gnote --open-note=Scratchpad
 # System tools
 bindsym $mod+F5 exec /usr/bin/setxkbmap -model thinkpad60 -layout br
 bindsym $mod+F6 exec $i3dm screensaver -t
 bindsym $mod+F7 exec $i3dm clipboard
 bindsym $mod+F8 exec $i3dm screenctl --no-wait
+bindsym $mod+F9 exec /home/danilo/tools/utils/netcheck
 # Some more tools ui
 bindsym $mod+F11 exec $i3dm volumectl --ui
 bindsym $mod+F12 exec $i3dm screenctl --ui 

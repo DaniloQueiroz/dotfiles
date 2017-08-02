@@ -4,6 +4,7 @@
 .settings/
 .class
 .pyc
+.idea
 .gradle/
 sbt/
 build/
