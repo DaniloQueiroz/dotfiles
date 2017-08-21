@@ -30,14 +30,8 @@ client.unfocused          #29303a   #29303a   #FFFFFF   #000000
 
 ## Startup/Session programs
 exec --no-startup-id $i3dm session
-# fix keyboard layout
-exec --no-startup-id /usr/bin/setxkbmap -model thinkpad60 -layout br
-# Synaptics Touchpad (vertical and horizontal natural scrolling)
-exec --no-startup-id xinput --set-prop "Synaptics TM2722-001" "Synaptics Two-Finger Scrolling" 1 1
-exec --no-startup-id xinput --set-prop "Synaptics TM2722-001" "Synaptics Scrolling Distance" -99 -99
 
 ## Keybinds
-#bindsym $mod+P exec passmenu -b -i -p "pass > "
 # Apps keybinds
 bindsym $mod+F1 exec pcmanfm
 bindsym $mod+F2 exec firefox -P personal
@@ -150,19 +144,6 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
-
-## System Mode
-set $mode_system System (l) logout, (s) suspend, (r) reboot, (Shift+s) shutdown
-mode "$mode_system" {
-    bindsym l exec --no-startup-id i3-msg exit, mode "default"
-    bindsym s exec --no-startup-id systemctl suspend, mode "default"
-    bindsym r exec --no-startup-id systemctl reboot, mode "default"
-    bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"
-
-    # back to normal Escape
-    bindsym Escape mode "default"
-}
-#bindsym $mod+Delete mode "$mode_system"
 
 ## StatusBar
 bar {
