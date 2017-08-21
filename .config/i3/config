@@ -37,7 +37,7 @@ exec --no-startup-id xinput --set-prop "SynPS/2 Synaptics TouchPad" "Synaptics T
 exec --no-startup-id xinput --set-prop "SynPS/2 Synaptics TouchPad" "Synaptics Scrolling Distance" -99 -99
 
 ## Keybinds
-bindsym $mod+P exec passmenu -b -i -p "pass > "
+#bindsym $mod+P exec passmenu -b -i -p "pass > "
 # Apps keybinds
 bindsym $mod+F1 exec pcmanfm
 bindsym $mod+F2 exec firefox -P personal
@@ -75,9 +75,7 @@ bindsym $mod+l exec $i3dm screensaver lock
 bindsym $mod+Shift+r restart
 
 ## Launcher
-bindsym $mod+d exec --no-startup-id $i3dm launch app
-bindsym $mod+s exec --no-startup-id $i3dm launch file
-bindsym $mod+Tab exec --no-startup-id $i3dm launch window
+bindsym $mod+d exec --no-startup-id $i3dm launch
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -164,7 +162,7 @@ mode "$mode_system" {
     # back to normal Escape
     bindsym Escape mode "default"
 }
-bindsym $mod+Delete mode "$mode_system"
+#bindsym $mod+Delete mode "$mode_system"
 
 ## StatusBar
 bar {
