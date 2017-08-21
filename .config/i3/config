@@ -33,8 +33,8 @@ exec --no-startup-id $i3dm session
 # fix keyboard layout
 exec --no-startup-id /usr/bin/setxkbmap -model thinkpad60 -layout br
 # Synaptics Touchpad (vertical and horizontal natural scrolling)
-exec --no-startup-id xinput --set-prop "SynPS/2 Synaptics TouchPad" "Synaptics Two-Finger Scrolling" 1 1
-exec --no-startup-id xinput --set-prop "SynPS/2 Synaptics TouchPad" "Synaptics Scrolling Distance" -99 -99
+exec --no-startup-id xinput --set-prop "Synaptics TM2722-001" "Synaptics Two-Finger Scrolling" 1 1
+exec --no-startup-id xinput --set-prop "Synaptics TM2722-001" "Synaptics Scrolling Distance" -99 -99
 
 ## Keybinds
 #bindsym $mod+P exec passmenu -b -i -p "pass > "
