@@ -21,7 +21,9 @@ workspace "10" output HDMI1
 # Floating windows
 for_window [window_role="pop-up"] floating enable
 for_window [class="Galculator" instance="galculator"] floating enable
+for_window [class="Pinentry" instance="pinentry"] floating enable
 #for_window [class="Gnote" instance="gnote"] floating enable
+
 
 #colors:       border  backgr. text    indicator
 client.focused            #373d48  #373d48    #FFFFFF   #373d48
@@ -45,7 +47,7 @@ bindsym $mod+F8 exec $i3dm screenctl --no-wait
 bindsym $mod+F9 exec /home/danilo/tools/utils/netcheck
 # Some more tools ui
 bindsym $mod+F11 exec $i3dm volumectl --ui
-bindsym $mod+F12 exec $i3dm screenctl --ui 
+bindsym $mod+F12 exec $i3dm screenctl --ui
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id $i3dm volumectl up
 bindsym XF86AudioLowerVolume exec --no-startup-id $i3dm volumectl down
