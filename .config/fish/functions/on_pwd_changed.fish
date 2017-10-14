@@ -9,11 +9,7 @@ function on_pwd_changed --on-variable PWD
   if test -f '.venv'  # virtualenv loading
     set _venv (cat .venv)
     echo "loading virtualenv $_venv..."
-    vf activate $_venv
-  else if test -f '.ruby-gemset'  # gemset loading
-    set _gemset (cat .ruby-version)@(cat .ruby-gemset)
-    echo "loading gemset $_gemset... "
-    rvm use $_gemset
+    pyenv activate $_venv
   end
 
   # add current dir to PATH

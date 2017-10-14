@@ -1,16 +1,9 @@
 function fish_prompt --description 'Write out the prompt'
   set -l last_status $status
 
-  # Virtualenv
+  # PyEnv
   if set -q VIRTUAL_ENV
     echo -n -s (set_color -b blue white) "(" (python --version 2>&1)@(basename "$VIRTUAL_ENV") ")" (set_color normal) " "
-  end
-
-  # RVM
-  if set -q rvm_version
-    if test -n (rvm-prompt g)
-        echo -n -s (set_color -b blue white) "(" (rvm-prompt) ")" (set_color normal) " "
-    end
   end
 
   # User
