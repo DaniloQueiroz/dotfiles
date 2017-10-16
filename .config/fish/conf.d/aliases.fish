@@ -1,4 +1,4 @@
 # aliases
 alias rm 'rm -rfv'
 alias v 'vim'
-alias less '/usr/bin/less -MQRSi'
+alias less '/usr/bin/less -MQRSic'
