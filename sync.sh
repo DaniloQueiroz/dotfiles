@@ -27,7 +27,7 @@ function home() {
     fi
 
     for file in $files; do
-        rsync -crbv --suffix=.bak $file ~/$file
+        rsync -abv --suffix=.bak $file ~/$file
     done
 }
 
@@ -37,7 +37,7 @@ function repo() {
     fi
 
     for file in $files; do
-        rsync -crv ~/$file ./$file
+        rsync -av --delete-excluded ~/$file ./$file
     done
 }
 
