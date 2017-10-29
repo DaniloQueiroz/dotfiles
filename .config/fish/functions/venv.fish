@@ -1,7 +1,7 @@
 function venv --description 'Python virtual envs using pyenv'
   if test -z "$argv"
     echo "Wrong usage. Params: [ls|rm|new|activate|deactivate]"
-    exit 1
+    return 1
   end
 
   switch $argv[1]
@@ -24,5 +24,8 @@ function venv --description 'Python virtual envs using pyenv'
       pyenv activate $argv[3]
     case connect
       echo (basename "$VIRTUAL_ENV") > .venv
+    case '*'
+      echo available commands: ls, rm, new, connect, activate, deactivate
+      return 1
   end
 end
