@@ -37,7 +37,6 @@ workspace "10" output HDMI2
 for_window [window_role="pop-up"] floating enable
 for_window [class="Galculator" instance="galculator"] floating enable
 for_window [class="Pinentry" instance="pinentry"] floating enable
-#for_window [class="Gnote" instance="gnote"] floating enable
 
 ## Startup/Session programs
 exec --no-startup-id $i3dm session
@@ -173,20 +172,3 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
-
-## StatusBar
-#bar {
-#    status_command /usr/bin/python3 ~/.config/i3/status.py
-#    position bottom
-#    workspace_buttons yes
-#    tray_padding 2
-#    separator_symbol ⁝
-#    font pango:Hack 9
-#    colors {
-#        background $bg-color
-#        separator $separator
-#        focused_workspace  $bg-color          $bg-color          $text-color
-#        inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
-#        urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
-#    }
-#}
