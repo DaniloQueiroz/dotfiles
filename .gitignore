@@ -7,3 +7,4 @@
 .atom/compile-cache/
 .atom/packages
 .atom/.node-gyp/
+.config/fish/conf.d/aws-eventmobi.fish

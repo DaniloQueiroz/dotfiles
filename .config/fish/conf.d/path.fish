@@ -1,8 +1,5 @@
-# i3dm path
-set PATH ~/tools/i3dm $PATH
+for i in (find -H  ~/tools -maxdepth 3 -type d -name bin)
+    set PATH $i $PATH
+end
 
-# utils path
-set PATH ~/tools/utils $PATH
-
-# android path
-set PATH ~/tools/android/platform-tools/ ~/tools/android/tools/bin $PATH
+set PATH "" $PATH  # HACK: avoid eating first directory

@@ -6,17 +6,14 @@ function venv --description 'Python virtual envs using pyenv'
 
   switch $argv[1]
     case deactivate
-      set -e PATH[1]
       pyenv deactivate
     case activate
       pyenv activate $argv[2]
-      set PATH $PYENV_VIRTUAL_ENV/bin $PATH
     case ls
       pyenv virtualenvs
     case rm
       if test -n "$VIRTUAL_ENV"
         set RM_ENV "$VIRTUAL_ENV"
-        set -e PATH[1]
         pyenv deactivate
         pyenv uninstall (basename "$RM_ENV"); and rm "$RM_ENV"
       else
