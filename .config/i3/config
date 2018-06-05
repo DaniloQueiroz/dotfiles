@@ -83,6 +83,8 @@ bindsym $mod+d exec --no-startup-id $i3dm launch -a # apps
 bindsym $mod+Tab exec --no-startup-id $i3dm launch -w # windowa
 bindsym $mod+P exec --no-startup-id $i3dm launch -p # pass
 
+
+bindsym $mod+m move workspace to output right
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
@@ -109,7 +111,7 @@ bindsym $mod+e layout toggle split
 bindsym $mod+Shift+space floating toggle
 
 # hide/unhide i3status bar
-bindsym $mod+m bar mode toggle
+bindsym $mod+b bar mode toggle
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
