@@ -150,6 +150,25 @@ bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
+
+## Bar
+bar {
+    status_command i3status --conf ~/.config/i3/i3status.conf
+    position bottom
+    workspace_buttons yes
+    tray_padding 2
+    separator_symbol ⁝
+    font pango:Hack 9
+    tray_output primary
+    colors {
+        background $bg-color
+        separator $separator
+        focused_workspace  $bg-color          $bg-color          $text-color
+        inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
+        urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
+    }
+}
+
 ## System Mode
 set $mode_system System (l) logout, (s) suspend, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
