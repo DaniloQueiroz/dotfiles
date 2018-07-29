@@ -37,6 +37,7 @@ workspace "10" output HDMI1
 for_window [window_role="pop-up"] floating enable
 for_window [class="Galculator" instance="galculator"] floating enable
 for_window [class="Pinentry" instance="pinentry"] floating enable
+for_window [class="Firefox"] fullscreen enable
 
 ## Startup/Session programs
 exec --no-startup-id $i3dm session
@@ -80,9 +81,9 @@ bindsym $mod+Shift+r restart
 
 ## Launcher
 bindsym $mod+d exec --no-startup-id $i3dm launch -a # apps
-bindsym $mod+Tab exec --no-startup-id $i3dm launch -w # windowa
+bindsym $mod+Tab exec --no-startup-id $i3dm launch -w # window
 bindsym $mod+P exec --no-startup-id $i3dm launch -p # pass
-
+bindsym $mod+S exec --no-startup-id $i3dm launch -s # web-search
 
 bindsym $mod+m move workspace to output right
 # alternatively, you can use the cursor keys:
