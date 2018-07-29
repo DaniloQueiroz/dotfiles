@@ -157,7 +157,7 @@ bindsym $mod+Shift+0 move container to workspace 10
 
 ## Bar
 bar {
-    status_command i3status --conf ~/.config/i3/i3status.conf
+    status_command ~/.config/i3/i3status_wrapper --conf ~/.config/i3/i3status.conf
     position bottom
     workspace_buttons yes
     tray_padding 2
