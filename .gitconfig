@@ -15,6 +15,7 @@
   d = diff --color-words
   wc = whatchanged
   f = fetch --all --tags --prune -v
+  rs = reset
 [push]
   default = current
 [branch]
