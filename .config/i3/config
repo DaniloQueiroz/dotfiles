@@ -7,11 +7,11 @@ new_float pixel 1
 hide_edge_borders both
 
 # Colors
-set $bg-color            #2f343f
-set $inactive-bg-color   #2f343f
-set $text-color          #f3f4f5
+set $bg-color            #0C1923
+set $inactive-bg-color   #102230
+set $text-color          #AAAAAA
 set $inactive-text-color #676E7D
-set $urgent-bg-color     #E53935
+set $urgent-bg-color     #540000
 set $indicator           #00ff00
 set $separator           #757575
 
@@ -160,12 +160,12 @@ bar {
     position bottom
     workspace_buttons yes
     tray_padding 2
-    separator_symbol ⁝
+#    separator_symbol ⁝
     font pango:Hack 9
     tray_output primary
     colors {
         background $bg-color
-        separator $separator
+#        separator $separator
         focused_workspace  $bg-color          $bg-color          $text-color
         inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
         urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
