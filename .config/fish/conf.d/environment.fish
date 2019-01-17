@@ -6,4 +6,4 @@ set -xg PAGER '/usr/bin/less -MQRSi'
 set -xg PYTHONDONTWRITEBYTECODE 'please_dont'
 # Set VIRTUALFISH_HOME
 set -xg VIRTUALFISH_HOME $HOME/.virtualenvs
-set -eu PIP_CERT
+set -e PIP_CERT
