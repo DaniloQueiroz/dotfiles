@@ -1,5 +1,0 @@
-[Desktop Entry]
-Type=Application
-Exec=/usr/bin/pasystray
-Name=pasystray
-Comment=PulseAudio controller for the system tray
