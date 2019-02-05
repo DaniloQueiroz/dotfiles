@@ -1,7 +1,26 @@
 #!/bin/bash
 
-if [ $# -eq 1 ] && [ $1 == '-c' ];then
-    yaourt -Scv && yaourt -Syu --aur
-else
-    yaourt -Syu --aur
+function print_stats() {
+    yay -Ps
+}
+
+function update_system() {
+    yay -Syu --devel --timeupdate
+}
+
+function clean_cache() {
+    yay -Scv
+}
+
+function clean_dependencies() {
+    yay -Yc
+}
+
+
+if [ $# -eq 1 ] && [ $1 == '-f' ];then
+    print_stats
+    clean_cache
 fi
+
+update_system
+clean_dependencies
