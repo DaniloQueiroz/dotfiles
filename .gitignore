@@ -3,8 +3,7 @@
 .config/fish/fishd*
 .config/fish/conf.d/cliix.fish
 .config/i3/wallpapers/
-*.bak
-.atom/compile-cache/
-.atom/packages
-.atom/.node-gyp/
 .config/fish/conf.d/aws-eventmobi.fish
+.config/fish/fish_variables
+*.bak
+

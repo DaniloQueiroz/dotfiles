@@ -1,6 +1,7 @@
 .config/fish/
 .config/i3/
 .config/autostart/
+.ssh/config
 .screen/*
 .vimrc
 .git_commit_msg
