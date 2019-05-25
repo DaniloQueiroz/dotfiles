@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=KDE Connect Indicator
+Comment=KDE Connect Indicator
+Exec=/usr/bin/indicator-kdeconnect
+Terminal=false
+Type=Application
+StartupNotify=true
