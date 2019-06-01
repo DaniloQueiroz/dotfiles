@@ -1,13 +1,6 @@
 # load files from conf.d dir
-set -g fish_color_status red
-set -g fish_color_cwd_root red
-set -g fish_color_cwd green
-set -g fish_color_status red
-set -g fish_color_user -o green
-set -g fish_color_host -o cyan
-
 for conf in ~/.config/fish/conf.d/*.fish
-    source $conf 
+    source $conf
 end
 
 set -e fish_greeting

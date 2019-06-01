@@ -1,4 +1,10 @@
 function fish_prompt --description 'Write out the prompt'
+  set -g fish_color_status red
+  set -g fish_color_cwd_root red
+  set -g fish_color_cwd magenta
+  set -g fish_color_status red
+  set -g fish_color_user -o blue
+  set -g fish_color_host -o cyan
   set -l last_status $status
 
   # PyEnv
@@ -15,7 +21,7 @@ function fish_prompt --description 'Write out the prompt'
 
   # Host
   set_color $fish_color_host
-  echo -n (hostname -s)
+  echo -n (hostname)
   set_color normal
 
   echo -n ':'
@@ -33,6 +39,6 @@ function fish_prompt --description 'Write out the prompt'
   end
 
   # Prompt
-  echo -n ' ➤ '
+  echo -n ' ❯ '
   set_color normal
 end
