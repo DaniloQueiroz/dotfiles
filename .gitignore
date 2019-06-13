@@ -2,7 +2,6 @@
 .config/fish/fish_read_history
 .config/fish/fishd*
 .config/fish/conf.d/cliix.fish
-.config/i3/wallpapers/
 .config/fish/conf.d/aws-eventmobi.fish
 .config/fish/fish_variables
 *.bak
