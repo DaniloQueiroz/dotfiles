@@ -34,9 +34,9 @@ workspace "9" output HDMI1
 workspace "10" output HDMI1
 
 # Floating windows
+for_window [instance="pinentry-gtk-2"] focus, floating enable
 for_window [window_role="pop-up"] floating enable
 for_window [class="Galculator" instance="galculator"] floating enable
-for_window [class="Pinentry" instance="pinentry"] floating enable
 
 ## Startup/Session programs
 exec --no-startup-id $i3dm session
@@ -164,12 +164,10 @@ bar {
     position bottom
     workspace_buttons yes
     tray_padding 2
-#    separator_symbol ⁝
     font pango:Hack 9
     tray_output primary
     colors {
         background $bg-color
-#        separator $separator
         focused_workspace  $bg-color          $bg-color          $text-color
         inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
         urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color

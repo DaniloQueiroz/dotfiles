@@ -2,4 +2,3 @@
 --smart-case
 --color
 --pager=less -MQRSi
---ignore-directory=venv
