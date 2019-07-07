@@ -57,11 +57,13 @@ bindsym $mod+F8 exec $i3dm screenctl --no-wait
 bindsym $mod+F11 exec $i3dm volumectl --ui
 bindsym $mod+F12 exec $i3dm screenctl --ui
 # Pulse Audio controls
+bindsym XF86Tools exec spotify
 bindsym XF86AudioRaiseVolume exec --no-startup-id $i3dm volumectl up
 bindsym XF86AudioLowerVolume exec --no-startup-id $i3dm volumectl down
 bindsym XF86AudioMute exec --no-startup-id $i3dm volumectl mute
 bindsym XF86AudioMicMute exec --no-startup-id $i3dm volumectl mic
 # Media player controls
+bindsym XF86AudioStop exec --no-startup-id bash /home/danilo/tools/utils/spotifyctl pause
 bindsym XF86AudioPlay exec --no-startup-id bash /home/danilo/tools/utils/spotifyctl play
 bindsym XF86AudioNext exec --no-startup-id bash /home/danilo/tools/utils/spotifyctl next
 bindsym XF86AudioPrev exec --no-startup-id bash /home/danilo/tools/utils/spotifyctl prev
