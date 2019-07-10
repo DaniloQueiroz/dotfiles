@@ -10,3 +10,4 @@
 .tigrc
 .ackrc
 tools/utils/
+.howl/init.moon
