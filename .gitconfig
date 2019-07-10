@@ -40,6 +40,6 @@
   new = green
 
 [commit]
-	template = /home/danilo/.git_commit_msg
+	template = ~/.git_commit_msg
 [mergetool "meld"]
 	path = /usr/bin/meld
