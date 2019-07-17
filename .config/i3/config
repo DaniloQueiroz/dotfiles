@@ -83,7 +83,8 @@ bindsym $mod+Shift+r restart
 ## Launcher
 bindsym $mod+d exec --no-startup-id $i3dm launch -a # apps
 bindsym $mod+Tab exec --no-startup-id $i3dm launch -w # window
-bindsym $mod+P exec --no-startup-id $i3dm launch -p # pass
+bindsym $mod+p exec --no-startup-id $i3dm launch -p # pass
+bindsym $mod+a exec --no-startup-id $i3dm launch # any
 
 ## Move workspaces
 bindsym $mod+Shift+m move workspace to output left
@@ -129,7 +130,7 @@ floating_modifier $mod
 bindsym $mod+space focus mode_toggle
 
 # focus the parent container
-bindsym $mod+a focus parent
+#bindsym $mod+a focus parent
 
 # switch to workspace
 bindsym $mod+1 workspace 1
