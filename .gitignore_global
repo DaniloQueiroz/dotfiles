@@ -25,3 +25,5 @@ run.fish
 .ruby-version
 .cache-main
 .cache-tests
+coverage_report.xml
+test_report.xml
