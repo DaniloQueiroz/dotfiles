@@ -167,7 +167,7 @@ bar {
     position bottom
     workspace_buttons yes
     tray_padding 2
-    font pango:Hack 9
+    font pango:Hack 9, FontAwesome 9
     tray_output primary
     colors {
         background $bg-color
