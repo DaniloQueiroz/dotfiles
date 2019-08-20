@@ -19,6 +19,7 @@
 [push]
   default = current
 [branch]
+  autosetupmerge = always
   autosetuprebase = always
 [rebase]
   autosquash = true
