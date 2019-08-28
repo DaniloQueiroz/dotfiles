@@ -7,7 +7,6 @@
 .git_commit_msg
 .gitconfig
 .gitignore_global
-.tigrc
 .ackrc
 tools/utils/
 .howl/init.moon
