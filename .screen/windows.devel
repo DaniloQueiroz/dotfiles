@@ -1,6 +1,0 @@
-chdir $HOME
-screen -t home /usr/bin/fish
-
-chdir Programming/mine
-screen -t shell /usr/bin/fish
-

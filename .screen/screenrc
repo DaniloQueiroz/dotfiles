@@ -1,3 +1,0 @@
-source $HOME/.screen/profile
-source $HOME/.screen/keybindings
-source $HOME/.screen/windows.$SCREEN_PROFILE
