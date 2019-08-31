@@ -19,6 +19,7 @@
 [push]
   default = current
 [branch]
+  autosetupmerge = always
   autosetuprebase = always
 [rebase]
   autosquash = true
@@ -38,8 +39,14 @@
   frag = magenta bold
   old = red
   new = green
-
 [commit]
 	template = ~/.git_commit_msg
-[mergetool "meld"]
-	path = /usr/bin/meld
+
+[tig]
+    main-view = id author:full date:relative commit-title 
+
+[tig "bind"]
+    status = A !?git commit --amend
+    status = P !git push origin
+    main = P !git push origin
+
