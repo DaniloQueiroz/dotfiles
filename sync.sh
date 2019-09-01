@@ -39,6 +39,7 @@ function repo() {
     for file in $files; do
         rsync -av --delete-excluded ~/$file ./$file
     done
+    pacman -Qqe > pkglist.txt
 }
 
 cmd=$1
