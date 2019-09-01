@@ -1,7 +1,0 @@
-[Desktop Entry]
-Name=KDE Connect Daemon
-Comment=KDE Connect Daemon
-Exec=/usr/lib/kdeconnectd
-Terminal=false
-Type=Application
-StartupNotify=true

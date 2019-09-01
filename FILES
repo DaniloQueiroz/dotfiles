@@ -4,7 +4,6 @@
 .ssh/config
 .tmux.conf
 .vimrc
-.tigrc
 .ackrc
 .git_commit_msg
 .gitconfig
