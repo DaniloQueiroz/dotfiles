@@ -1,13 +1,6 @@
 # load files from conf.d dir
 if status is-interactive 
 and not set -q TMUX
-    tmux has-session -t bz
-    if test $status -eq 0
-        exec tmux attach-session -t bz
-    else
-        exec tmux new -s bz
-    end
-
     for conf in ~/.config/fish/conf.d/*.fish
         source $conf
     end 

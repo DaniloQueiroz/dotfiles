@@ -1,7 +1,6 @@
 # Set variabled
 set $mod Mod4
 set $i3dm ~/tools/i3dm/i3dm
-set $terminal /usr/bin/st -f "Source Code Pro:size=10"
 set $fontsize 9
 
 # Theme config
@@ -44,22 +43,25 @@ for_window [class="Galculator" instance="galculator"] floating enable
 ## Startup/Session programs
 exec --no-startup-id $i3dm session
 
-## Keybinds
-# Apps keybinds
-bindsym $mod+F1 exec pcmanfm
-bindsym $mod+F2 exec firefox -P personal
-bindsym $mod+F3 exec firefox -P default
-bindsym $mod+F4 exec howl
-# System tools
+# Keybinds
+## Launcher
+bindsym $mod+d exec --no-startup-id $i3dm launch apps
+bindsym $mod+Tab exec --no-startup-id $i3dm launch windows
+bindsym $mod+p exec --no-startup-id $i3dm launch pass
+bindsym $mod+Return exec $i3dm launch terminal
+bindsym $mod+F9 exec st
+bindsym $mod+a exec --no-startup-id $i3dm launch 
+## System tools
+bindsym $mod+l exec $i3dm screensaver lock
 bindsym $mod+F5 exec $i3dm input
 bindsym $mod+F6 exec $i3dm screensaver -t
 bindsym $mod+F7 exec $i3dm clipboard
 bindsym $mod+F8 exec $i3dm screenctl --no-wait
-
-# Some more tools ui
+bindsym XF86MonBrightnessUp exec $i3dm brightnessctl up
+bindsym XF86MonBrightnessDown exec $i3dm brightnessctl down
 bindsym $mod+F11 exec $i3dm volumectl --ui
 bindsym $mod+F12 exec $i3dm screenctl --ui
-# Pulse Audio controls
+## Audio controls
 bindsym XF86Tools exec spotify
 bindsym XF86AudioRaiseVolume exec --no-startup-id $i3dm volumectl up
 bindsym XF86AudioLowerVolume exec --no-startup-id $i3dm volumectl down
@@ -70,47 +72,32 @@ bindsym XF86AudioStop exec --no-startup-id bash ~/tools/utils/spotifyctl pause
 bindsym XF86AudioPlay exec --no-startup-id bash ~/tools/utils/spotifyctl play
 bindsym XF86AudioNext exec --no-startup-id bash ~/tools/utils/spotifyctl next
 bindsym XF86AudioPrev exec --no-startup-id bash ~/tools/utils/spotifyctl prev
-# Sreen brightness controls
-bindsym XF86MonBrightnessUp exec $i3dm brightnessctl up
-bindsym XF86MonBrightnessDown exec $i3dm brightnessctl down
 
-# start a terminal
-bindsym $mod+Return exec $terminal
-# kill focused window
+# Apps keybinds
+bindsym $mod+F1 exec pcmanfm
+bindsym $mod+F2 exec firefox -P personal
+bindsym $mod+F3 exec firefox -P default
+bindsym $mod+F4 exec howl
+
+# i3
 bindsym $mod+Shift+q kill
-# lock screen
-bindsym $mod+l exec $i3dm screensaver lock
-# restart i3
 bindsym $mod+Shift+r restart
-
-## Launcher
-bindsym $mod+d exec --no-startup-id $i3dm launch -a # apps
-bindsym $mod+Tab exec --no-startup-id $i3dm launch -w # window
-bindsym $mod+p exec --no-startup-id $i3dm launch -p # pass
-bindsym $mod+a exec --no-startup-id $i3dm launch # any
-
 ## Move workspaces
 bindsym $mod+Shift+m move workspace to output left
 bindsym $mod+m move workspace to output right
-
 ## Scratchpad
 bindsym $mod+Shift+s move scratchpad
 bindsym $mod+s scratchpad show
-
-
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
-
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
-
-# split in horizontal orientation
 bindsym $mod+h split h
 # split in vertical orientation
 bindsym $mod+v split v
@@ -119,22 +106,12 @@ bindsym $mod+f fullscreen toggle
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
-
-# toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
-
-# hide/unhide i3status bar
 bindsym $mod+b bar mode toggle
-
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
-
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
-
-# focus the parent container
-#bindsym $mod+a focus parent
-
 # switch to workspace
 bindsym $mod+1 workspace 1
 bindsym $mod+2 workspace 2
@@ -146,29 +123,19 @@ bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
-
 #Browse through workspaces
 bindsym Ctrl+Mod4+Left workspace prev
 bindsym Ctrl+Mod4+Right workspace next
-
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1
 bindsym $mod+Shift+2 move container to workspace 2
 bindsym $mod+Shift+3 move container to workspace 3
 bindsym $mod+Shift+4 move container to workspace 4
-bindsym $mod+Shift+5 move container to workspace 5
-bindsym $mod+Shift+6 move container to workspace 6
-bindsym $mod+Shift+7 move container to workspace 7
-bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace 10
 
-
-## Bar
+# Bar
 bar {
     status_command ~/.config/i3/i3status_wrapper --conf ~/.config/i3/i3status.conf
     position bottom
-    workspace_buttons yes
     tray_padding 2
     font pango:Hack $fontsize, FontAwesome $fontsize
     tray_output primary

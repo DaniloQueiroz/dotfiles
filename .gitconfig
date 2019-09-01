@@ -3,7 +3,6 @@
 	email = dpenna.queiroz@gmail.com
 [alias]
   st = status -bs
-  co = checkout
   br = branch -vv
   ci = commit
   cl = clone
