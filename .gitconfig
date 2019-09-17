@@ -43,7 +43,7 @@
 	template = ~/.git_commit_msg
 
 [tig]
-    main-view = id author:full date:relative commit-title 
+    main-view = id author:full date:relative commit-title:graph:v2 
 
 [tig "bind"]
     status = A !?git commit --amend
