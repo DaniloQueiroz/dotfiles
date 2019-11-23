@@ -4,7 +4,6 @@
 [alias]
   st = status -bs
   br = branch -vv
-  co = checkout
   ci = commit
   cl = clone
   rb = rebase
