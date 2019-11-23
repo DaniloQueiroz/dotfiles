@@ -1,7 +1,7 @@
 # Set variabled
 set $mod Mod4
 set $i3dm ~/tools/i3dm/i3dm
-set $fontsize 9
+set $fontsize 10
 
 # Theme config
 font pango:Hack $fontsize
@@ -9,10 +9,10 @@ new_float pixel 1
 hide_edge_borders both
 
 # Colors
-set $bg-color            #0C1923
-set $inactive-bg-color   #102230
-set $text-color          #AAAAAA
-set $inactive-text-color #676E7D
+set $bg-color            #000000
+set $inactive-bg-color   #0C0C0C
+set $text-color          #FFFFFF
+set $inactive-text-color #707070
 set $urgent-bg-color     #540000
 set $indicator           #00ff00
 set $separator           #757575
