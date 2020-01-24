@@ -48,4 +48,4 @@
     status = A !?git commit --amend
     status = P !git push origin
     main = P !git push origin
-
+    refs = F !git fetch --all
