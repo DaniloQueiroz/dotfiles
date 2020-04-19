@@ -1,10 +1,11 @@
 # Set variabled
 set $mod Mod4
 set $i3dm ~/tools/i3dm/i3dm
+set $dude /usr/bin/dude
 set $fontsize 10
 
 # Theme config
-font pango:Hack $fontsize
+font pango:Roboto $fontsize
 new_float pixel 1
 hide_edge_borders both
 
@@ -39,34 +40,31 @@ workspace "10" output HDMI1
 for_window [instance="pinentry-gtk-2"] focus, floating enable
 for_window [window_role="pop-up"] floating enable
 for_window [class="Galculator" instance="galculator"] floating enable
+for_window [class="Dude" title="Launcher"] floating enable
 
 ## Startup/Session programs
-exec --no-startup-id $i3dm session
+exec --no-startup-id $dude session
 
 # Keybinds
-## Launcher
-bindsym $mod+d exec --no-startup-id $i3dm launch apps
-bindsym $mod+Tab exec --no-startup-id $i3dm launch windows
-bindsym $mod+p exec --no-startup-id $i3dm launch pass
-bindsym $mod+Return exec $i3dm launch terminal
-bindsym $mod+F9 exec st
-bindsym $mod+a exec --no-startup-id $i3dm launch 
-## System tools
-bindsym $mod+l exec $i3dm screensaver lock
-bindsym $mod+F5 exec $i3dm input
-bindsym $mod+F6 exec $i3dm screensaver -t
-bindsym $mod+F7 exec $i3dm clipboard
-bindsym $mod+F8 exec $i3dm screenctl --no-wait
-bindsym XF86MonBrightnessUp exec $i3dm brightnessctl up
-bindsym XF86MonBrightnessDown exec $i3dm brightnessctl down
-bindsym $mod+F11 exec $i3dm volumectl --ui
-bindsym $mod+F12 exec $i3dm screenctl --ui
-## Audio controls
+## Dude
+bindsym $mod+space exec --no-startup-id $dude launcher
+bindsym $mod+Return exec $dude terminal
+bindsym $mod+l exec $dude lock-screen
+
+bindsym XF86MonBrightnessUp exec $dude brightness up
+bindsym XF86MonBrightnessDown exec $dude brightness down
+
+bindsym XF86AudioRaiseVolume exec --no-startup-id $dude audio vol-up
+bindsym XF86AudioLowerVolume exec --no-startup-id $dude audio vol-down
+bindsym XF86AudioMute exec --no-startup-id $dude audio vol-mute
+BINDSYM xf86aUDIOmICmUTE EXEC --no-startup-id $dude audio mic-mute
+
+
 bindsym XF86Tools exec spotify
-bindsym XF86AudioRaiseVolume exec --no-startup-id $i3dm volumectl up
-bindsym XF86AudioLowerVolume exec --no-startup-id $i3dm volumectl down
-bindsym XF86AudioMute exec --no-startup-id $i3dm volumectl mute
-bindsym XF86AudioMicMute exec --no-startup-id $i3dm volumectl mic
+
+## System tools
+bindsym $mod+F5 exec $i3dm input
+bindsym $mod+F7 exec $i3dm clipboard
 # Media player controls
 bindsym XF86AudioStop exec --no-startup-id bash ~/tools/utils/spotifyctl pause
 bindsym XF86AudioPlay exec --no-startup-id bash ~/tools/utils/spotifyctl play
@@ -76,8 +74,6 @@ bindsym XF86AudioPrev exec --no-startup-id bash ~/tools/utils/spotifyctl prev
 # Apps keybinds
 bindsym $mod+F1 exec pcmanfm
 bindsym $mod+F2 exec firefox -P personal
-bindsym $mod+F3 exec firefox -P default
-bindsym $mod+F4 exec howl
 
 # i3
 bindsym $mod+Shift+q kill
@@ -111,7 +107,7 @@ bindsym $mod+b bar mode toggle
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+#bindsym $mod+space focus mode_toggle
 # switch to workspace
 bindsym $mod+1 workspace 1
 bindsym $mod+2 workspace 2
@@ -156,7 +152,7 @@ bar {
 ## System Mode
 set $mode_system System (l) logout, (s) suspend, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
-    bindsym l exec --no-startup-id i3-msg exit, mode "default"
+    bindsym l exec --no-startup-id ~/.config/i3/logout.sh, mode "default"
     bindsym s exec --no-startup-id systemctl suspend, mode "default"
     bindsym r exec --no-startup-id systemctl reboot, mode "default"
     bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"

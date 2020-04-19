@@ -1,7 +1,0 @@
-[Desktop Entry]
-Name=Desktop Notification Daemon
-Comment=Notification Daemon
-Exec=/home/danilo/tools/utils/low-battery-notify
-Terminal=false
-Type=Application
-StartupNotify=true
