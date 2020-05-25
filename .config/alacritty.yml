@@ -1,5 +1,3 @@
-env:
-  TERM: alacritty
 window:
   title: Terminal
   class:
@@ -33,5 +31,5 @@ cursor:
   style: Beam
 live_config_reload: true
 shell:
-  program: /bin/fish
+  program: /usr/bin/fish
 
