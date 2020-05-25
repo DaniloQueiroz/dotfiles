@@ -1,5 +1,0 @@
-[Desktop Entry]
-Type=Application
-Exec=/usr/bin/nm-applet
-Name=nm-applet
-Comment=NetworkManager applet for the system tray

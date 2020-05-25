@@ -41,7 +41,6 @@ diffutils
 dmenu
 docbook-xml
 docbook-xsl
-docker-compose
 dosfstools
 double-conversion
 e2fsprogs
@@ -106,6 +105,7 @@ iproute2
 iputils
 ipython
 itstool
+iwd
 jfsutils
 jq
 less
@@ -146,13 +146,12 @@ nano
 ncdu
 net-tools
 nethogs
-network-manager-applet
-networkmanager
-networkmanager-openvpn
 nmap
 nmon
 nnn
 notify-osd
+npm
+obs-studio
 openbsd-netcat
 openssh
 otf-font-awesome
@@ -198,6 +197,7 @@ procps-ng
 psmisc
 pulseaudio
 pulseaudio-alsa
+pulseaudio-bluetooth
 pyenv
 pygtk
 python
@@ -236,10 +236,10 @@ systemd-sysvcompat
 tar
 tcpdump
 tdb
+termdown
 texinfo
 tig
 tmux
-totem
 tp-battery-mode
 ttf-dejavu
 ttf-hack
@@ -247,6 +247,7 @@ ttf-inconsolata
 ttf-ms-fonts
 ttf-roboto
 unrar
+upower
 usbutils
 util-linux
 vi

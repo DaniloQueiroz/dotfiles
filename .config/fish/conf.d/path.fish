@@ -6,4 +6,4 @@ set PATH "" $PATH  # HACK: avoid eating first directory
 set PATH ~/tools/utils $PATH
 
 # android path
-#set PATH ~/tools/android/platform-tools/ ~/tools/android/tools/bin $PATH
+set PATH ~/tools/android/platform-tools/ ~/tools/android/tools/bin $PATH

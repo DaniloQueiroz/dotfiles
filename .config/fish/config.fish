@@ -19,4 +19,3 @@ if status is-interactive
     # load on_pwd_changed handle
     on_pwd_changed
 end
-
