@@ -1,6 +1,7 @@
 .config/fish/
 .config/i3/
 .config/autostart/
+.config/alacritty.yml
 .ssh/config
 .tmux.conf
 .vimrc

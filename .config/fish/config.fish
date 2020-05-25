@@ -19,3 +19,4 @@ and not set -q TMUX
     # load on_pwd_changed handle
     on_pwd_changed
 end
+

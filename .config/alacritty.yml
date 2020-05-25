@@ -1,0 +1,37 @@
+env:
+  TERM: alacritty
+window:
+  title: Terminal
+  class:
+    general: Terminal
+scrolling:
+  # Maximum number of lines in the scrollback buffer.
+  # Specifying '0' will disable scrolling.
+  history: 0
+font:
+  normal:
+    family: "Source Code Pro"
+    style: Regular
+  bold:
+    family: "Source Code Pro"
+    style: Bold
+  italic:
+    family: "Source Code Pro Light"
+    style: Regular
+  bold_italic:
+    family: "Source Code Pro"
+    style: Bold
+  size: 11.0
+draw_bold_text_with_bright_colors: true
+background_opacity: 0.9
+selection:
+  #semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
+  save_to_clipboard: true
+dynamic_title: false
+cursor:
+  # ▇ Block; _ Underline; | Beam
+  style: Beam
+live_config_reload: true
+shell:
+  program: /bin/fish
+
