@@ -4,6 +4,7 @@ acpi_call
 acpid
 adapta-gtk-theme
 adobe-source-code-pro-fonts
+alacritty
 arc-icon-theme
 arch-install-scripts
 archey3
@@ -228,7 +229,6 @@ spotify
 sqlite
 sshuttle
 sslscan
-st
 strace
 sudo
 sysfsutils
@@ -247,7 +247,6 @@ ttf-inconsolata
 ttf-ms-fonts
 ttf-roboto
 unrar
-upower
 usbutils
 util-linux
 vi
