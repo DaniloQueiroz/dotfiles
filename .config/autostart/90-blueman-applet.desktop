@@ -1,5 +1,0 @@
-[Desktop Entry]
-Type=Application
-Exec=/usr/bin/blueman-applet
-Name=blueman-applet
-Comment=Blueman applet for the system tray

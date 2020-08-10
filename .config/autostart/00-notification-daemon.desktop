@@ -1,7 +1,0 @@
-[Desktop Entry]
-Name=Desktop Notification Daemon
-Comment=Notification Daemon
-Exec=/usr/lib/notify-osd/notify-osd
-Terminal=false
-Type=Application
-StartupNotify=true

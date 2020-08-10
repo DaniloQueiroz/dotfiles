@@ -1,5 +1,5 @@
 .config/fish/
-.config/i3/
+.config/bspwm/
 .config/autostart/
 .config/alacritty.yml
 .ssh/config
@@ -9,5 +9,4 @@
 .git_commit_msg
 .gitconfig
 .gitignore_global
-.howl/init.moon
 tools/utils/
