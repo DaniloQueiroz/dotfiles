@@ -93,7 +93,7 @@ type = internal/memory
 interval = 1
 
 format = <label>
-label = %gb_used%
+label = %percentage_used%%
 label-foreground = ${colors.foreground-alt}
 format-prefix-foreground = ${colors.primary}
 format-prefix = " "
