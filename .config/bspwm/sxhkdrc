@@ -100,7 +100,7 @@ super + ctrl + Return
 
 ## Layout and tree manipulation
 # alternate layout: tiled/monocle
-super + shift + m
+super + shift + space
 	bspc desktop -l next
 
 # rotate tree
