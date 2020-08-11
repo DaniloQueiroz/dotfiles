@@ -16,11 +16,16 @@ function clean_dependencies() {
     yay -Yc
 }
 
+function sec_audit() {
+    arch-audit
+}
+
 
 if [ $# -eq 1 ] && [ $1 == '-f' ];then
     print_stats
     clean_cache
 fi
 
+sec_audit
 update_system
 clean_dependencies
