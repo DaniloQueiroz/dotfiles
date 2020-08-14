@@ -19,7 +19,15 @@ XF86AudioLowerVolume
 	dude audio vol-down
 XF86AudioMute
 	dude audio vol-mute
-
+XF86AudioPlay
+	~/tools/utils/spotifyctl play
+XF86AudioStop
+	~/tools/utils/spotifyctl pause
+XF86AudioPrev
+	~/tools/utils/spotifyctl prev
+XF86AudioNext
+	~/tools/utils/spotifyctl next
+	
 ### bspwm hotkeys
 # restart bspwm
 super + shift + r

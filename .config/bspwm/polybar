@@ -37,7 +37,7 @@ font-2 = FontAwesome5Free:style=Regular:pixelsize=10;1
 font-3 = FontAwesome5Brands:pixelsize=10;1
 modules-left = bspwm
 modules-center = window
-modules-right = memory cpu temperature wlan eth pulseaudio datetime
+modules-right = spotify memory cpu temperature wlan eth pulseaudio datetime
 wm-restack = bspwm
 override-redirect = false
 cursor-click = pointer
@@ -87,7 +87,13 @@ label-maxlen = 50
 label-empty = Empty
 label-empty-foreground = #707880
 
-
+[module/spotify]
+type = custom/script
+interval = 1
+format-prefix = " "
+format-prefix-foreground = ${colors.primary}
+format = <label>
+exec = bash ~/.config/bspwm/polybar_scripts/spotify-now -i '%artist: %title' -e '' -p ''
 [module/memory]
 type = internal/memory
 interval = 1
