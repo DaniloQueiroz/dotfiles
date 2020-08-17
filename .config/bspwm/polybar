@@ -93,7 +93,7 @@ interval = 1
 format-prefix = " "
 format-prefix-foreground = ${colors.primary}
 format = <label>
-exec = bash ~/.config/bspwm/polybar_scripts/spotify-now -i '%artist: %title' -e '' -p ''
+exec = bash ~/.config/bspwm/polybar_scripts/spotify-now -i '%artist: %title' -e 'Not Running' 
 [module/memory]
 type = internal/memory
 interval = 1

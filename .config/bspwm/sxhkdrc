@@ -13,6 +13,9 @@ super + Return
 super + l
 	dude lock-screen
 
+### media keys
+XF86Tools
+	spotify
 XF86AudioRaiseVolume
 	dude audio vol-up
 XF86AudioLowerVolume
