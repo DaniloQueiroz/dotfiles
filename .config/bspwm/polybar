@@ -122,7 +122,7 @@ format-connected = <label-connected>
 format-connected-prefix = " "
 format-connected-prefix-foreground = ${colors.primary}
 label-active-font = 2
-label-connected = %essid%
+label-connected = %essid% %signal%%
 
 [module/eth]
 type = internal/network
