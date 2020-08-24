@@ -1,6 +1,6 @@
 [user]
-  name = Danilo Penna Queiroz
-	email = dpenna.queiroz@gmail.com
+  name = danilo queiroz
+  email = dq@rndmind.dev
 [alias]
   st = status -bs
   br = branch -vv
@@ -27,6 +27,7 @@
 [core]
   excludesfile = ~/.gitignore_global
   editor = vim
+  autocrlf = input
 [color]
   ui = true
 [color "branch"]
@@ -39,16 +40,14 @@
   old = red
   new = green
 [commit]
-	template = ~/.git_commit_msg
-
+  template = ~/.git_commit_msg
 [tig]
-    main-view = id author:full date:relative commit-title:graph:v2 
-
+  main-view = id author:full date:relative commit-title:graph:v2 
 [tig "bind"]
-    status = A !?git commit --amend
-    status = F !?git push origin --force
-    status = P !git push origin
-    main = P !git push origin
-    refs = F !git fetch --all
+  status = A !?git commit --amend
+  status = F !?git push origin --force
+  status = P !git push origin
+  main = P !git push origin
+  refs = F !git fetch --all
 [pull]
-	rebase = true
+  rebase = true
