@@ -1,16 +1,7 @@
-**This folder is not empty - we are talking about dot files, do you remember? ;)**
+My dotfiles
 
-# Syncing files
+The files are managed using [GNU Stow](https://www.gnu.org/software/stow/) to link the files in this folder to their expected locations.
 
-Use the sync script to sync the dot files to your home and from your home.
+Use the `setup.sh` script to create the links.
 
-## Sync to your home
 
-Use 'sync.sh home'. It will copy all dotfiles to your home - but don't worry, 
-your previous dotfiles will be kept with the '.bak' suffix.
-
-## Sync to repo (this folder)
-
-Use 'sync.sh repo'. It will copy all dotfiles to your this folder. And yes,
-it will override everything (no .bak files).
- 
