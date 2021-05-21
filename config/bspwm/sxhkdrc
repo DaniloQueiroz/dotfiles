@@ -118,16 +118,11 @@ super + shift + space
 super + alt + {Left,Right}
     bspc node @/ -C {backward,forward}
 
-# swap the current node and the biggestv window
+# swap the current node and the biggest window
 super + shift + g
-	bspc node -s biggest.window
+    bspc node -s biggest.window
 
-
-## Scratchpad
-# hide window
+## Obsidian/Notes Scratchpad
 super + v
-    bspc node -g hidden
-# un-hide window
-super + shift + v
-    bspc node (bspc query -N -n .hidden | tail -n1) -g hidden=off
+    ~/tools/utils/notes_scratchpad.sh
 
