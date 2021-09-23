@@ -122,6 +122,10 @@ super + alt + {Left,Right}
 super + shift + g
     bspc node -s biggest.window
 
+# Screenshots
+super + Print
+    maim -s | xclip -selection clipboard -t image/png
+
 ## Obsidian/Notes Scratchpad
 super + v
     ~/tools/utils/notes_scratchpad.sh
