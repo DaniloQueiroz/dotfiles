@@ -22,7 +22,7 @@ font:
     style: Bold
   size: 12.0
 draw_bold_text_with_bright_colors: true
-background_opacity: 0.9
+background_opacity: 1.0
 selection:
   #semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
   save_to_clipboard: true
@@ -30,8 +30,20 @@ cursor:
   # ▇ Block; _ Underline; | Beam
   style: Beam
 live_config_reload: true
+mouse_bindings:
+  - { mouse: Right, action: PasteSelection }
 shell:
-  program: /usr/bin/fish
+  program: /usr/bin/tmux
+  args:
+    - attach
+    - -t
+    - terminal
+key_bindings:
+    # remove the line below!
+  - { key: Plus, mods: Control, action: IncreaseFontSize }
+  - { key: Minus, mods: Control, action: DecreaseFontSize }
+  - { key: Key0, mods: Control, action: ResetFontSize }
+  - { key: D, mods: Control, action: Quit }
 # NORD theme colors
 colors:
   primary:
