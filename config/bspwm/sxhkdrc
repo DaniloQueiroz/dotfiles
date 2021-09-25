@@ -9,7 +9,7 @@ super + F1
 super + @space
 	dude launcher
 super + Return
-	dude terminal
+	alacritty
 super + l
 	dude lock-screen
 
