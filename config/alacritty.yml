@@ -42,8 +42,8 @@ key_bindings:
   - { key: Plus, mods: Control, action: IncreaseFontSize }
   - { key: Minus, mods: Control, action: DecreaseFontSize }
   - { key: Key0, mods: Control, action: ResetFontSize }
-  - { key: PageUp, action: ScrollHalfPageUp }
-  - { key: PageDown, action: ScrollHalfPageDown }
+  - { key: PageUp, mods: Control, action: ScrollHalfPageUp }
+  - { key: PageDown, mods: Control, action: ScrollHalfPageDown }
   - { key: F, mods: Control, action: SearchForward }
   - { key: F, mods: Control|Shift, action: SearchBackward }
   - { key: Escape, mods: Control, action: ToggleViMode }
