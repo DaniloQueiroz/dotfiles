@@ -6,7 +6,8 @@ window:
 scrolling:
   # Maximum number of lines in the scrollback buffer.
   # Specifying '0' will disable scrolling.
-  history: 0
+  history: 10000
+  multiplier: 5
 font:
   normal:
     family: "Source Code Pro"
@@ -33,18 +34,20 @@ live_config_reload: true
 mouse_bindings:
   - { mouse: Right, action: PasteSelection }
 shell:
-  program: /usr/bin/tmux
+  program: /usr/bin/tab
   args:
-    - attach
-    - -t
-    - terminal
+    - start
 key_bindings:
     # remove the line below!
   - { key: Plus, mods: Control, action: IncreaseFontSize }
   - { key: Minus, mods: Control, action: DecreaseFontSize }
   - { key: Key0, mods: Control, action: ResetFontSize }
-  - { key: D, mods: Control, action: Quit }
-# NORD theme colors
+  - { key: PageUp, action: ScrollHalfPageUp }
+  - { key: PageDown, action: ScrollHalfPageDown }
+  - { key: F, mods: Control, action: SearchForward }
+  - { key: F, mods: Control|Shift, action: SearchBackward }
+  - { key: Escape, mods: Control, action: ToggleViMode }
+  # NORD theme colors
 colors:
   primary:
     background: '0x2E3440'
