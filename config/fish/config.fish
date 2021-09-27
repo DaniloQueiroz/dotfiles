@@ -1,6 +1,5 @@
 # load files from conf.d dir
 if status is-interactive 
-#and not set -q TMUX
     for conf in ~/.config/fish/conf.d/*.fish
         source $conf
     end 

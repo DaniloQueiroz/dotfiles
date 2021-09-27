@@ -1,2 +1,3 @@
-# utils path
-set PATH ~/tools/utils ~/tools/flutter/bin ~/tools/idea/bin $PATH
+fish_add_path ~/tools/utils 
+fish_add_path ~/tools/flutter/bin 
+
