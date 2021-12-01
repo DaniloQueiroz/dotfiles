@@ -8,7 +8,7 @@
 .gradle/
 sbt/
 build/
-bin/
+#bin/
 .venv
 *.iml
 out/
@@ -27,3 +27,5 @@ run.fish
 .cache-tests
 coverage_report.xml
 test_report.xml
+
+.go-version

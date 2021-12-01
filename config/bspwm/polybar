@@ -15,7 +15,7 @@ foreground-alt = ${colors.light-gray}
 alert = ${colors.yellow}
 
 [bar/main]
-monitor = ${env:MONITOR:}
+monitor = HDMI-0
 width = 3440:-50
 height = 25
 radius = 0

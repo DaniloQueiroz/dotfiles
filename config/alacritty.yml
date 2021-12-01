@@ -35,8 +35,6 @@ mouse_bindings:
   - { mouse: Right, action: PasteSelection }
 shell:
   program: /usr/bin/tab
-  args:
-    - start
 key_bindings:
     # remove the line below!
   - { key: Plus, mods: Control, action: IncreaseFontSize }
