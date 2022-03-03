@@ -1,15 +1,19 @@
 #!/bin/bash
 
+logout="Logout"
 lock_screen="LockScreen"
 standby="Suspend"
 reboot="Reboot"
 shutdown="Shutdown"
 
 if [ -z "$@" ]; then
-  options=($lock_screen $standby $reboot $shutdown)
+  options=($logout $lock_screen $standby $reboot $shutdown)
   printf '%s\n' "${options[@]}"
 else
   case "$1" in
+    $logout)
+        loginctl terminate-session $XDG_SESSION_ID
+        ;;
     $lock_screen)
         loginctl lock-session
         ;;
