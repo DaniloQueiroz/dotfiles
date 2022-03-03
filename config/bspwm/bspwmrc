@@ -7,7 +7,7 @@ $HOME/.config/bspwm/autostart.sh
 
 bspc monitor HDMI1 -d 1 2 3 4 5  
 bspc monitor HDMI2 -d 6 7 8 9 10 
-bspc wm -O HDMI2 HDMI1
+bspc wm -O HDMI1 HDMI2
 
 bspc config border_width         2
 bspc config window_gap           5
