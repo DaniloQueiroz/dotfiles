@@ -7,7 +7,7 @@ super + F1
 
 ### dude hotkeys
 super + @space
-	dude launcher
+	rofi -show combi
 super + Return
 	alacritty
 super + l
@@ -45,6 +45,7 @@ super + k
 	bspc node -k
 
 ## Focusr
+## Focus
 # focus windows
 super + {Left,Down,Up,Right}
 	bspc node -f {west,south,north,east}

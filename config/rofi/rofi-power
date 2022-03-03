@@ -1,0 +1,30 @@
+#!/bin/bash
+
+lock_screen="LockScreen"
+standby="Suspend"
+reboot="Reboot"
+shutdown="Shutdown"
+
+if [ -z "$@" ]; then
+  options=($lock_screen $standby $reboot $shutdown)
+  printf '%s\n' "${options[@]}"
+else
+  case "$1" in
+    $lock_screen)
+        loginctl lock-session
+        ;;
+    $standby)
+        systemctl suspend
+        ;;
+    $logout)
+        loginctl terminate-session $XDG_SESSION_ID
+        ;;
+    $reboot)
+        systemctl reboot
+        ;;
+    $shutdown)
+        systemctl poweroff
+        ;;
+  esac
+
+fi
