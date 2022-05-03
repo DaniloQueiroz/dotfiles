@@ -3,7 +3,7 @@
 if [[ -z $@ ]]; then
   echo "iwctl"
   iwctl known-networks list | awk -F'  +' 'NR > 4 && NF > 0 { print $2 }'
-elif [ $1 == "iwctl" ]; then
+elif [ "$1" == "iwctl" ]; then
   coproc alacritty -e iwctl
 else
   iwctl station wlan0 connect "$*"
