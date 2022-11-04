@@ -1,17 +1,30 @@
 # reload sxhkd
 super + Escape
-	pkill -USR1 -x sxhkd
-### apps
-super + F1
-    firefox
+    pkill -USR1 -x sxhkd && notify-send "sxhkd restarted"
 
-### dude hotkeys
+### launchers
 super + @space
 	rofi -show combi
 super + Return
 	alacritty
 super + l
 	dude lock-screen
+# Screenshots
+super + Print
+    ~/tools/utils/screenshot.sh
+super + shift + Print
+    ~/tools/utils/screenshot.sh y
+# Obsidian/Notes Scratchpad
+super + v
+    ~/tools/utils/app_scratchpad.sh /usr/bin/obsidian obsidian
+# Browsers
+super + F1
+    firefox
+super + F2
+    google-chrome-stable
+
+
+
 
 ### media keys
 XF86Tools
@@ -44,7 +57,6 @@ super + w
 super + k
 	bspc node -k
 
-## Focusr
 ## Focus
 # focus windows
 super + {Left,Down,Up,Right}
@@ -123,11 +135,4 @@ super + alt + {Left,Right}
 super + shift + g
     bspc node -s biggest.window
 
-# Screenshots
-super + Print
-    maim -s | xclip -selection clipboard -t image/png
-
-## Obsidian/Notes Scratchpad
-super + v
-    ~/tools/utils/notes_scratchpad.sh
 
