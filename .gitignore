@@ -5,5 +5,5 @@
 .config/fish/conf.d/aws-eventmobi.fish
 .config/fish/fish_variables
 *.bak
-
+.secret
 config/fish/fish_variables

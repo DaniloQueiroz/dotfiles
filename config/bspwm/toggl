@@ -1,0 +1,35 @@
+#!/usr/bin/env python3
+import time, requests, json
+from pathlib import Path
+
+
+def load_secret():
+    """load .secret file"""
+    with open(".secret", "r") as f:
+        return "\n".join(f.readlines()).strip()
+
+def load_current_project(api_token):
+    response = requests.get("https://api.track.toggl.com/api/v8/time_entries/current", auth=(api_token, "api_token"))
+    assert response.status_code == 200
+    return json.loads(response.content)
+
+def calculate_hours_minutes(duration):
+    seconds = time.time() - abs(duration)
+    m, s = divmod(seconds, 60)
+    h, m = divmod(m, 60)
+    h = int(h)
+    m = int(m)
+    m = f"0{m}" if m < 10 else str(m)
+    return (str(h), m)
+
+
+api_token = load_secret()
+current = load_current_project(api_token)
+
+if current['data'] is not None and ("pid" in current["data"] or "description" in current["data"]):
+    name = current['data']['description']
+    duration = current['data']['duration']
+    hours, minutes = calculate_hours_minutes(duration)
+    print(f"{name} ({hours}:{minutes})")
+else:
+    print("No project")
