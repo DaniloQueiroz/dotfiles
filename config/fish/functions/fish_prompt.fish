@@ -27,9 +27,9 @@ set __fish_color_host -o cyan
 function fish_prompt --description 'Write out the prompt'
   set -l last_status $status
 
-  # Tab - show current tab name
-  if set -q TAB
-    echo -n -s (set_color red)"$TAB"(set_color normal)·
+  # TERMINALSESSION - show current terminalsession name
+  if set -q TERMINALSESSION
+    echo -n -s (set_color red)"$TERMINALSESSION"(set_color normal)·
   end
 
   # Python VirtualEnv
