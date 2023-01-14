@@ -16,7 +16,7 @@ super + shift + Print
     ~/tools/utils/screenshot.sh y
 # Obsidian/Notes Scratchpad
 super + v
-    ~/tools/utils/app_scratchpad.sh /usr/bin/obsidian obsidian
+    ~/bin/app_scratchpad.sh /usr/bin/obsidian obsidian
 # Browsers
 super + F1
     firefox

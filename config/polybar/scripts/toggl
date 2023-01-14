@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import time, requests, json
 from pathlib import Path
+import subprocess
 
 
 def load_secret():
@@ -8,10 +9,12 @@ def load_secret():
     with Path.home().joinpath(".toggl_secret").open() as f:
         return "\n".join(f.readlines()).strip()
 
+
 def load_current_project(api_token):
     response = requests.get("https://api.track.toggl.com/api/v8/time_entries/current", auth=(api_token, "api_token"))
     assert response.status_code == 200
     return json.loads(response.content)
+
 
 def calculate_hours_minutes(duration):
     seconds = time.time() - abs(duration)
@@ -23,6 +26,14 @@ def calculate_hours_minutes(duration):
     return (str(h), m)
 
 
+def notify_task(task, hours, minutes):
+    minutes_i = int(minutes)
+    if minutes_i == 0 or minutes_i == 30:
+        msg = f"Task '{task}' is in progress for {hours}:{minutes}"
+        cmd = ["notify-send", "-u", "critical", "-t", "30000", "-a", "Toggl Timer", msg]
+        subprocess.run(args=cmd)
+    
+
 api_token = load_secret()
 current = load_current_project(api_token)
 
@@ -30,6 +41,8 @@ if current['data'] is not None and ("pid" in current["data"] or "description" in
     name = current['data']['description']
     duration = current['data']['duration']
     hours, minutes = calculate_hours_minutes(duration)
+    
+    notify_task(name, hours, minutes)        
     print(f"{name} ({hours}:{minutes})")
 else:
     print("No project")
