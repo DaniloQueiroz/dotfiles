@@ -30,9 +30,9 @@ def notify_task(task, hours, minutes):
     minutes_i = int(minutes)
     if minutes_i == 0 or minutes_i == 30:
         msg = f"Task '{task}' is in progress for {hours}:{minutes}"
-        cmd = ["notify-send", "-u", "critical", "-t", "30000", "-a", "Toggl Timer", msg]
+        cmd = ["notify-send", "-u", "critical", "-t", "30000", "-a", "Toggl", "Task in progress", msg]
         subprocess.run(args=cmd)
-    
+
 
 api_token = load_secret()
 current = load_current_project(api_token)
