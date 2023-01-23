@@ -1,12 +1,19 @@
-install:
-	mkdir -p ~/{bin,.ssh,.config}
-	stow -vR -t ~ home/
-	stow -vR -t ~/.ssh ssh/
-	stow -vR -t ~/.config/ config/
-	stow -vR -t ~/bin bin/
+STOW = /usr/bin/stow
+DEST_DIRS = bin/ .config .ssh/
 
-uninstall:
-	stow -vD -t ~ home/
-	stow -vD -t ~/.ssh ssh/
-	stow -vD -t ~/.config/ config/
-	stow -vD -t ~/bin bin/
+create_dirs:
+	for d in $(DEST_DIRS); do\
+		mkdir -p $$HOME/$$d ;\
+	done
+
+setup: create_dirs
+	$(STOW) --restow home/
+	$(STOW) --restow --target $$HOME/bin bin
+	$(STOW) --target $$HOME/.config/ config
+	$(STOW) --restow --target $$HOME/.ssh ssh
+
+remove:
+	$(STOW) --delete --target ~ home/
+	$(STOW) --delete --target ~/.ssh ssh/
+	$(STOW) --delete --target ~/.config/ config/
+	$(STOW) --delete --target ~/bin bin/
