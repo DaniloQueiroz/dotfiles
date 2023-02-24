@@ -1,0 +1,47 @@
+#!/bin/env bash
+
+function list_pass() {
+    fd . -e .gpg ~/.password-store/ \
+        | sed -e "s:^.*password-store/::gi" -e 's:.gpg$::gi'
+}
+
+function clip_pass() {
+    pass --clip "$*"
+}
+
+
+function show_menu {
+    list_pass | fzf \
+            --prompt "pass> " \
+            --no-multi \
+            --ansi \
+            --history ~/.local/share/pass/history \
+            --preview-window="up,99%" \
+            --header="
+    Enter: to clipboard | A-Enter: preview | C-e: edit | C-s: sync (pull+push) | Esc: close/exit" \
+            --bind "enter:replace-query+execute($0 clip {q})+close" \
+            --bind "alt-enter:replace-query+preview(pass show {q})" \
+            --bind "ctrl-e:replace-query+execute(pass edit {q})+clear-query+reload($0 list)" \
+            --bind="ctrl-s:execute(pass git pull --rebase)+execute(pass git push)+reload($0 list)" \
+            --bind="esc:close"
+}
+
+function main() {
+  local op=$1
+  shift
+  case $op in
+    list)
+      list_pass
+      ;;
+    clip)
+      clip_pass $*
+      ;;
+    *)
+      show_menu
+      ;;
+  esac
+}
+
+mkdir -p $HOME/.local/share/pass/
+
+main $*
