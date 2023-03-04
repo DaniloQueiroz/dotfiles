@@ -26,8 +26,8 @@ set -U fish_color_error $nord11
 set -U fish_color_param $nord6
 set -U fish_color_comment $nord2
 set -U fish_color_match $nord8
-set -U fish_color_selection $nord4 --bold --background=$nord0
-set -U fish_color_search_match $nord8 --background=$nord0
+set -U fish_color_selection $nord4 --bold --background=$nord3
+set -U fish_color_search_match $nord8 --background=$nord3
 set -U fish_color_history_current --bold
 set -U fish_color_operator $nord9
 set -U fish_color_escape $nord13
@@ -41,7 +41,7 @@ set -U fish_pager_color_prefix $nord13
 set -U fish_pager_color_progress $nord12
 set -U fish_pager_color_completion $nord6
 set -U fish_pager_color_description $nord10
-set -U fish_pager_color_selected_background --background=$nord0
+set -U fish_pager_color_selected_background --background=$nord3
 set -U fish_color_host_remote $nord12
 
 # git prompt colors config
