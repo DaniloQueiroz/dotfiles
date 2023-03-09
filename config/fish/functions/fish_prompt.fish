@@ -18,14 +18,6 @@ set __fish_git_prompt_showupstream 'informative'
 function fish_prompt --description 'Write out the prompt'
   set -l last_status $status
 
-  # TERMINALSESSION - show current terminalsession name
-  if set -q TERMINALSESSION
-    set_color $nord7
-    echo -n "$TERMINALSESSION"
-    set_color normal
-    echo -n ·
-  end
-
   prompt_login
   echo -n ':'
   set_color $fish_color_cwd
@@ -42,4 +34,16 @@ function fish_prompt --description 'Write out the prompt'
   # Prompt
   echo -n ' ❯ '
   set_color normal
+end
+
+
+function fish_right_prompt
+  # TerminalSession - show current tab name
+  if set -q TERMINALSESSION
+    set_color $nord15
+    echo -n "$TERMINALSESSION "
+    set_color $nord7
+    echo -n "[C-a to detatch] "
+    set_color normal
+  end
 end
