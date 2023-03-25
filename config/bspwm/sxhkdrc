@@ -1,138 +1,121 @@
 # reload sxhkd
 super + Escape
-    pkill -USR1 -x sxhkd && notify-send "sxhkd restarted"
+  pkill -USR1 -x sxhkd && notify-send "sxhkd restarted"
 
 ### launchers
 super + @space
-	rofi -show combi
+  rofi -show combi
 super + Return
-	alacritty
+  alacritty
 super + l
-	dude lock-screen
+  loginctl lock-session
 # Screenshots
 super + Print
-    ~/tools/utils/screenshot.sh
+  ~/bin/screenshot.sh
 super + shift + Print
-    ~/tools/utils/screenshot.sh y
+  ~/bin/screenshot.sh y
 # Obsidian/Notes Scratchpad
 super + v
-    ~/bin/app_scratchpad.sh /usr/bin/obsidian obsidian
+  ~/bin/app_scratchpad.sh /usr/bin/obsidian obsidian
 # Browsers
 super + F1
-    firefox
+  firefox
 super + F2
-    google-chrome-stable
-
-
-
+  google-chrome-stable
 
 ### media keys
-XF86Tools
-	spotify
 XF86AudioRaiseVolume
-	dude audio vol-up
+  pactl set-sink-volume @DEFAULT_SINK@ +5%
 XF86AudioLowerVolume
-	dude audio vol-down
+  pactl set-sink-volume @DEFAULT_SINK@ -5%
 XF86AudioMute
-	dude audio vol-mute
-XF86AudioPlay
-	~/tools/utils/spotifyctl play
-XF86AudioStop
-	~/tools/utils/spotifyctl pause
-XF86AudioPrev
-	~/tools/utils/spotifyctl prev
-XF86AudioNext
-	~/tools/utils/spotifyctl next
-	
+  pactl set-sink-mute @DEFAULT_SINK@ toggle
+#XF86Tools
+#  spotify
+#XF86AudioPlay
+#  ~/tools/utils/spotifyctl play
+#XF86AudioStop
+#  ~/tools/utils/spotifyctl pause
+#XF86AudioPrev
+#  ~/tools/utils/spotifyctl prev
+#XF86AudioNext
+#  ~/tools/utils/spotifyctl next
+
 ### bspwm hotkeys
 # restart bspwm
 super + shift + r
-	bspc wm -r
-	
+  bspc wm -r
+
 ## Basic window operations
 # close
 super + w
-	bspc node -c
+  bspc node -c
 # kill 
 super + k
-	bspc node -k
+  bspc node -k
 
 ## Focus
 # focus windows
 super + {Left,Down,Up,Right}
-	bspc node -f {west,south,north,east}
-
+  bspc node -f {west,south,north,east}
 # focus alternate windows
 super + {_, shift + } grave
-	bspc node -f {next,prev}
-
-
+  bspc node -f {next,prev}
 # focus last node/desktop
 super + {_, shift + } Tab
-	bspc {desktop, node} -f last
-
+  bspc {desktop, node} -f last
 # focus desktop
 super + {1-9,0}
-	bspc desktop -f '^{1-9,10}'
+  bspc desktop -f '^{1-9,10}'
 
 ## Resizing
 # expand window
 super + ctrl + {Left,Down,Up,Right}
-	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
-
+  bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
 # shrink window
 super + ctrl + shift + {Left,Down,Up,Right}
-	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
-
+  bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
 
 ## Moving
 # move window direction
 super + shift + {Left,Down,Up,Right}
-	bspc node -s {west,south,north,east}
+  bspc node -s {west,south,north,east}
 
 # move window desktop
 super + shift + {1-9,0}
-	bspc node -d '^{1-9,10}'
-
+  bspc node -d '^{1-9,10}'
 
 ## state/flags
 # set the window state
 super + {t,s,f}
-	bspc node -t {tiled,floating,fullscreen}
-
+  bspc node -t {tiled,floating,fullscreen}
 # set the node flags
 super + {m,l}
-	bspc node -g {marked,locked}
-	
+  bspc node -g {marked,locked}
+
 ## preselection
 # preselect the direction
 super + ctrl + {h,j,k,l}
-        bspc node -p {west,south,north,east}
-
+  bspc node -p {west,south,north,east}
 # preselect the ratio
 super + ctrl + {1-9}
-        bspc node -o 0.{1-9}
-
+  bspc node -o 0.{1-9}
 # cancel the preselection for the focused desktop
 super + ctrl + space
-        bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
-
+  bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
 # send the newest marked node to the newest preselected node
 super + ctrl + Return
-	bspc node newest.marked.local -n newest.!automatic.local
-
+  bspc node newest.marked.local -n newest.!automatic.local
 
 ## Layout and tree manipulation
 # alternate layout: tiled/monocle
 super + shift + space
-	bspc desktop -l next
+  bspc desktop -l next
 
 # rotate tree
 super + alt + {Left,Right}
-    bspc node @/ -C {backward,forward}
+  bspc node @/ -C {backward,forward}
 
 # swap the current node and the biggest window
 super + shift + g
-    bspc node -s biggest.window
-
-
+  bspc node -s biggest.window
