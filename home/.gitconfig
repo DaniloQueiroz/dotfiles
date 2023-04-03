@@ -1,6 +1,35 @@
 [user]
   name = danilo queiroz
   email = dpenna.queiroz@gmail.com
+  signingkey = 1DA142C397DAA52C 
+[core]
+  excludesfile = ~/.gitignore_global
+  editor = vim
+  autocrlf = input
+[init]
+  defaultBranch = main
+[commit]
+  template = ~/.git_commit_msg
+[pull]
+  rebase = true
+[push]
+  default = current
+[rebase]
+  autosquash = true
+[branch]
+  autosetupmerge = always
+  autosetuprebase = always
+[color]
+  ui = true
+[color "branch"]
+  current = yellow reverse
+  local = yellow
+  remote = green
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old = red
+  new = green
 [alias]
   st = status -bs
   br = branch -vv
@@ -15,32 +44,8 @@
   wc = whatchanged
   f = fetch --all --tags --prune -v
   rs = reset
-[push]
-  default = current
-[branch]
-  autosetupmerge = always
-  autosetuprebase = always
-[rebase]
-  autosquash = true
 [diff]
   tool = meld
-[core]
-  excludesfile = ~/.gitignore_global
-  editor = vim
-  autocrlf = input
-[color]
-  ui = true
-[color "branch"]
-  current = yellow reverse
-  local = yellow
-  remote = green
-[color "diff"]
-  meta = yellow bold
-  frag = magenta bold
-  old = red
-  new = green
-[commit]
-  template = ~/.git_commit_msg
 [tig]
   main-view = id author:full date:relative commit-title:graph:v2 
 [tig "bind"]
@@ -49,7 +54,3 @@
   status = P !git push origin
   main = P !git push origin
   refs = F !git fetch --all
-[pull]
-  rebase = true
-[init]
-  defaultBranch = main
