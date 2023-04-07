@@ -5,7 +5,7 @@ AddKeysToAgent yes
 
 Host neuromancer
     ForwardAgent yes
-    HostName 192.168.86.42
+    HostName neuromancer.local
     Port 22
     User dq
     identityfile ~/.ssh/id_ecdsa
