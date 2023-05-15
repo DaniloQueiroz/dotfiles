@@ -3,10 +3,14 @@ import time, requests, json
 from pathlib import Path
 import subprocess
 
+DATA_DIR = Path.home().joinpath(".local", "share", "toggl")
+SECRET_PATH = DATA_DIR.joinpath("secret")
+AUDIO_PATH = DATA_DIR.joinpath("notification.wav")
+
 
 def load_secret():
     """load .secret file"""
-    with Path.home().joinpath(".toggl_secret").open() as f:
+    with SECRET_PATH.open() as f:
         return "\n".join(f.readlines()).strip()
 
 
@@ -32,17 +36,24 @@ def notify_task(task, hours, minutes):
         msg = f"Task '{task}' is in progress for {hours}:{minutes}"
         cmd = ["notify-send", "-u", "critical", "-t", "30000", "-a", "Toggl", "Task in progress", msg]
         subprocess.run(args=cmd)
+        cmd = ["aplay", str(AUDIO_PATH)]
+        subprocess.run(args=cmd, capture_output=True)
+
+
+def parse_data(data):
+    if data is not None and "description" in data and "duration" in data:
+        name = data['description']
+        duration = data['duration']
+        hours, minutes = calculate_hours_minutes(duration)
+        notify_task(name, hours, minutes)
+        print(f"{name} ({hours}:{minutes})")
+    else:
+        print("No project")
 
 
 api_token = load_secret()
-current = load_current_project(api_token)
-
-if current['data'] is not None and ("pid" in current["data"] or "description" in current["data"]):
-    name = current['data']['description']
-    duration = current['data']['duration']
-    hours, minutes = calculate_hours_minutes(duration)
-    
-    notify_task(name, hours, minutes)        
-    print(f"{name} ({hours}:{minutes})")
-else:
-    print("No project")
+try:
+    current = load_current_project(api_token)
+except Exception as err:
+    print(f"Error loading data: {err}")
+parse_data(current.get("data"))
