@@ -4,7 +4,7 @@
 AUDIO_DEVICE=alsa_output.usb-VIA_Technologies_Inc._USB_Audio_Device-00.analog-stereo
 NOTIFICATION_SOUND=~/.local/share/toggl/notification.wav
 
-RESULT=$(toggl get --short)
+RESULT=$($HOME/bin/toggl get --short)
 if [ $? -eq 0 ]; then
     echo $RESULT
     echo $RESULT | grep -e ":00" -e ":30"
