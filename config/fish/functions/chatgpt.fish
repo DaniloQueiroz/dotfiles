@@ -1,20 +1,8 @@
-function chatgpt -d "Ask questions to chatgpt"
-
-  function ask_question
-    read -P "?> " prompt
-    if test -n "$prompt"
-      answer_question "$prompt"
-    end
+function chatgpt -d "Ask questions to chatgpt" -a chatsession
+  clear
+  if test -z "$chatsession"
+      set -f chatsession $TERMINALSESSION
   end
-
-  function answer_question -a prompt
-    echo -n "chatgpt> "
-    sgpt --chat $TERMINALSESSION "$prompt"
-    ask_question
-  end
-
-  tput smcup
-  tput cup 0 0
-  ask_question
-  tput rmcup
+  sgpt --shell --repl $chatsession 
+  fish_prompt
 end
