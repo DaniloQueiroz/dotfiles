@@ -2,10 +2,5 @@
 
 IdentityFile ~/.ssh/id_ecdsa
 AddKeysToAgent yes
+ForwardAgent yes
 
-Host neuromancer
-    ForwardAgent yes
-    HostName neuromancer
-    Port 22
-    User dq
-    identityfile ~/.ssh/id_ecdsa
