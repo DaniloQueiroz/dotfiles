@@ -1,7 +1,7 @@
 [user]
   name = danilo queiroz
   email = dpenna.queiroz@gmail.com
-  signingkey = 1DA142C397DAA52C 
+  signingkey = 51495C384577B917 
 [core]
   excludesfile = ~/.gitignore_global
   editor = vim
@@ -10,6 +10,7 @@
   defaultBranch = main
 [commit]
   template = ~/.git_commit_msg
+  gpgsign = true
 [pull]
   rebase = true
 [push]
@@ -37,11 +38,9 @@
   cl = clone
   rb = rebase
   cp = cherry-pick
-  ai = add --interactive
   sl = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit
   l = log --graph --stat --abbrev-commit
   d = diff --color-words
-  wc = whatchanged
   f = fetch --all --tags --prune -v
   rs = reset
 [diff]
