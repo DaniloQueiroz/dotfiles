@@ -13,11 +13,11 @@ help: # Show help for each of the Makefile recipes.
 	done
 
 setup: .create_dirs # (re)install all the files links
-	$(STOW) --restow home/
+	$(STOW) --restow --target $$HOME home
 	$(STOW) --restow --target $$HOME/bin bin
 	$(STOW) --restow --target $$HOME/.config/ config
 	$(STOW) --restow --target $$HOME/.ssh ssh
-	$(STOW) --restow --target $$HOME/.local/share/gnome-shell/ gnome/
+	$(STOW) --restow --target $$HOME/.local/share/gnome-shell/ gnome
 
 remove: # remove all the files links
 	$(STOW) --delete --target ~ home/
