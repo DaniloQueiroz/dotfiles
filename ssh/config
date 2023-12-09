@@ -1,6 +1,6 @@
 # nerderati.com/2011/03/17/simplify-your-life-with-an-ssh-config-file/
 
-IdentityFile ~/.ssh/id_ecdsa
+IdentityFile ~/.ssh/id_ed25519
 AddKeysToAgent yes
 ForwardAgent yes
 
