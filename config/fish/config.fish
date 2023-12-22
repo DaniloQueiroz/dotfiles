@@ -1,5 +1,7 @@
 # load files from conf.d dir
-if status is-interactive 
+if status is-interactive
+    fzf_key_bindings
+
     for conf in ~/.config/fish/conf.d/*.fish
         source $conf
     end 
