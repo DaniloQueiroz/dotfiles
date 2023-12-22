@@ -17,6 +17,6 @@ function cheatsheet -d "Prints a cheatsheet with abbreviations, aliases and keyb
   set_color --bold blue
   printf "\n >> asdf\n"
   set_color normal
-  asdf current 1&| grep -v "No version is set." | awk '{ print " • " $(NF-1) " → " $NF }'
+  asdf current 1&| grep -v "No version is set." | awk '{ print " • " $1 " → " $2 }'
 end
   
