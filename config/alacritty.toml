@@ -109,7 +109,7 @@ program = "/usr/bin/tsctl"
 
 [window]
 dynamic_title = false
-opacity = 1.0
+opacity = 0.85
 title = "Terminal"
 
 [window.class]
