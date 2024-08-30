@@ -4,3 +4,6 @@ IdentityFile ~/.ssh/id_ed25519
 AddKeysToAgent yes
 ForwardAgent yes
 
+Host nsm
+    HostName nsm.duck-hamlet.ts.net
+    User pi

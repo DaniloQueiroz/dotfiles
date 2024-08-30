@@ -1,7 +1,7 @@
 [user]
   name = danilo queiroz
   email = dpenna.queiroz@gmail.com
-  signingkey = 51495C384577B917 
+  signingkey = 51495C384577B917
 [core]
   excludesfile = ~/.gitignore_global
   editor = vim
